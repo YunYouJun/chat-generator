@@ -1,0 +1,8 @@
+:root {
+  --cg-c-bg: #f5f5f5;
+}
+
+html.dark {
+  --cg-c-bg: #222;
+  --cg-c-text: #fff;
+}

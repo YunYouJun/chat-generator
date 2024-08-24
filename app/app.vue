@@ -23,7 +23,7 @@ body,
 }
 
 html.dark {
-  background: #222;
-  color: white;
+  background: var(--cg-c-bg);
+  color: var(--cg-c-text);
 }
 </style>

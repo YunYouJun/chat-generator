@@ -3,7 +3,8 @@ import { appDescription } from './app/constants/index'
 
 export default defineNuxtConfig({
   alias: {
-    '@yunlefun/chat-ui': './packages/chat-ui',
+    '@yunlefun/chat-ui': './packages/chat-ui/index.ts',
+    '@chat-generator/datasets': './packages/datasets/index.ts',
   },
 
   modules: [
@@ -13,6 +14,11 @@ export default defineNuxtConfig({
     '@nuxtjs/color-mode',
     '@vite-pwa/nuxt',
     '@nuxt/eslint',
+  ],
+
+  components: [
+    { path: '~/components', pathPrefix: false },
+    { path: '~~/packages/chat-ui/vue/components', pathPrefix: false },
   ],
 
   experimental: {
@@ -25,6 +31,7 @@ export default defineNuxtConfig({
 
   css: [
     '@unocss/reset/tailwind.css',
+    '~/styles/css-vars.css',
   ],
 
   colorMode: {

@@ -1,2 +1,2 @@
-export const appName = 'Vitesse for Nuxt 3'
-export const appDescription = 'Vitesse for Nuxt 3'
+export const appName = '聊天记录生成器'
+export const appDescription = '聊天记录生成器，聊天记录合集，结局选择器。'

@@ -3,13 +3,14 @@ definePageMeta({
   layout: 'home',
 })
 
-const online = useOnline()
+// const online = useOnline()
 </script>
 
 <template>
   <div>
-    <Logos mb-6 />
-    <Suspense>
+    <ChatSessionList />
+    <!-- <Logos mb-6 /> -->
+    <!-- <Suspense>
       <ClientOnly>
         <PageView v-if="online" />
         <div v-else text-gray:80>
@@ -22,6 +23,6 @@ const online = useOnline()
         </div>
       </template>
     </Suspense>
-    <InputEntry />
+    <InputEntry /> -->
   </div>
 </template>

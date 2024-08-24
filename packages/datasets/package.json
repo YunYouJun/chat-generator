@@ -1,0 +1,13 @@
+{
+  "name": "@chat-generator/datasets",
+  "version": "0.0.1",
+  "exports": {
+    ".": {
+      "import": "./index.ts"
+    }
+  },
+  "main": "index.ts",
+  "devDependencies": {
+    "@yunlefun/chat-ui": "workspace:*"
+  }
+}
