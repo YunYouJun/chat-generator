@@ -52,7 +52,11 @@ function download() {
 </script>
 
 <template>
-  <div ref="sessionRef" class="w-375px flex flex-col gap-4 rounded-lg bg-#111 p-6">
+  <div
+    ref="sessionRef"
+    class="w-375px flex flex-col gap-4 rounded-lg bg-#f2f2f2 p-6"
+    dark="bg-#111"
+  >
     <QqChatBubble
       v-for="(message, i) in session.messages"
       :key="i"
@@ -61,12 +65,12 @@ function download() {
     />
   </div>
 
-  <div class="w-full flex rounded">
-    <button class="flex-1 bg-black p-2 hover:bg-#111" @click="copy">
+  <div class="mt-1 w-full flex rounded">
+    <CGButton @click="copy">
       COPY
-    </button>
-    <button class="flex-1 bg-black p-2 hover:bg-#111" @click="download">
+    </CGButton>
+    <CGButton @click="download">
       DOWNLOAD
-    </button>
+    </CGButton>
   </div>
 </template>

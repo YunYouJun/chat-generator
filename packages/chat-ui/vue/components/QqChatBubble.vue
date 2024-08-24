@@ -46,18 +46,14 @@ const avatar = computed(() => {
       'justify-start flex-row-reverse': isUser,
     }"
   >
-    <div>
-      <img
-        v-if="avatar"
-        :src="avatar"
-        alt="avatar" class="size-9 rounded-full"
-      >
-      <div
-        v-else class="size-9 rounded-full bg-gray"
-        :class="{
-          'bg-blue-500!': isUser,
-        }"
-      />
+    <div class="size-9 rounded-full bg-blue">
+      <Transition mode="out-in">
+        <img
+          v-if="avatar"
+          :src="avatar"
+          alt="avatar" class="size-9 rounded-full"
+        >
+      </Transition>
     </div>
 
     <div
@@ -70,7 +66,7 @@ const avatar = computed(() => {
         {{ sender?.nickname }}
       </div>
       <div
-        class="qq-chat-bubble rounded-lg p-2"
+        class="qq-chat-bubble rounded-lg bg-white p-2"
         text="sm left"
         dark="bg-#262626 text-white"
       >
