@@ -11,18 +11,31 @@ const isUser = computed(() => {
   return props.sender?.type === 'user'
 })
 
-const avatar = computed(() => {
+const senderAvatar = computedAsync(async () => {
   if (props.sender?.avatar) {
     return props.sender.avatar
   }
   else if (props.sender?.qq) {
-    return getQQAvatar({
-      qq: props.sender.qq,
+    // return getQQAvatar({
+    //   qq: props.sender.qq,
+    // })
+    // proxy qq avatar to download
+    const base64 = await $fetch('/api/qq/avatar', {
+      query: {
+        url: getQQAvatar({
+          qq: props.sender.qq,
+        }),
+      },
     })
+    return typeof base64 === 'string' ? base64 : ''
   }
   else {
     return ''
   }
+})
+
+const avatar = computed(() => {
+  return senderAvatar.value
 })
 </script>
 
@@ -35,7 +48,8 @@ const avatar = computed(() => {
   >
     <div>
       <img
-        v-if="avatar" :src="avatar"
+        v-if="avatar"
+        :src="avatar"
         alt="avatar" class="size-9 rounded-full"
       >
       <div
@@ -56,7 +70,7 @@ const avatar = computed(() => {
         {{ sender?.nickname }}
       </div>
       <div
-        class="qq-chat-bubble inline-flex rounded-lg p-2"
+        class="qq-chat-bubble rounded-lg p-2"
         text="sm left"
         dark="bg-#262626 text-white"
       >

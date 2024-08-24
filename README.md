@@ -7,4 +7,5 @@
 ## TODO
 
 - Joker
+  - 感叹号
   - Gif 生成器

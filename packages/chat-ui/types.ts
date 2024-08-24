@@ -47,7 +47,7 @@ export interface ChatSession {
   /**
    * 会话ID
    */
-  id?: string
+  id?: string | number
   /**
    * 会话名称
    */
