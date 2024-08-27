@@ -52,7 +52,7 @@ onMounted(() => {
 
 <template>
   <div class="inline-flex flex-col items-center justify-center gap-2">
-    <div class="size-16 rounded-full" @click="queryQQAvatar(qq || 0)">
+    <div class="size-16 cursor-pointer rounded-full" @click="queryQQAvatar(qq || 0)">
       <img v-if="iAvatar" :src="iAvatar" alt="avatar" class="size-16 rounded-full">
       <div v-else class="size-16 rounded-full bg-gray" />
     </div>
@@ -61,14 +61,18 @@ onMounted(() => {
       {{ nickname }}
     </div>
 
-    <div class="flex gap-2">
+    <div class="flex flex-col gap-1">
       <input
-        class="w-30 border rounded bg-transparent p-2 text-sm text-black/60 shadow focus:border-dark outline-none!"
+        class="w-32 border rounded bg-transparent p-2 text-sm text-black/60 shadow focus:border-dark outline-none!"
         dark="text-white border-white/60 focus:border-white"
         type="number"
-        :value="qq" @input="updateQQ"
+        :value="qq" placeholder="输入QQ号查询"
+        @input="updateQQ"
         @keyup.enter="queryQQAvatar(qq || 0)"
       >
+      <span class="text-xs text-black/30">
+        点击头像或回车查询
+      </span>
       <!-- <div
         class="size-10 flex cursor-pointer items-center justify-center gap-1 rounded-full bg-blue p-2"
         @click="queryQQAvatar(qq)"

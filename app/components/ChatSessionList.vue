@@ -5,6 +5,7 @@ const jokerStore = useJokerStore()
 
 const sessions = ref(jokerChatDataSet.sessions)
 
+// TODO: inject avatar from store for ChatSessionUI
 watch(() => [
   jokerStore.joker.avatar,
   jokerStore.tower.avatar,
