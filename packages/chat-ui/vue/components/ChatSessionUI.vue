@@ -6,6 +6,10 @@ import type { ChatMember, ChatMessageItem, ChatSession } from '../../types'
 
 const props = defineProps<{
   session: ChatSession
+  /**
+   * show action buttons
+   */
+  showAction?: boolean
 }>()
 
 /**
@@ -54,7 +58,7 @@ function download() {
 <template>
   <div
     ref="sessionRef"
-    class="w-375px flex flex-col gap-4 rounded-lg bg-#f2f2f2 p-6"
+    class="chat-session-ui w-375px flex flex-col gap-4 rounded-lg bg-#f2f2f2 p-6"
     dark="bg-#111"
   >
     <QqChatBubble
@@ -65,12 +69,12 @@ function download() {
     />
   </div>
 
-  <div class="mt-1 w-full flex rounded">
+  <div v-if="showAction" class="mt-1 w-full flex gap-2 rounded">
     <CGButton @click="copy">
-      COPY
+      <div i-ri:file-copy-2-line />
     </CGButton>
     <CGButton @click="download">
-      DOWNLOAD
+      <div i-ri:download-2-line />
     </CGButton>
   </div>
 </template>

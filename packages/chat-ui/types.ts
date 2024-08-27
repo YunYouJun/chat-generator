@@ -1,6 +1,7 @@
 export interface ChatDataSet {
   id: string
   name: string
+  emoji: string
   /**
    * 会话合集
    */

@@ -2,6 +2,8 @@ import { pwa } from './app/config/pwa'
 import { appDescription } from './app/constants/index'
 
 export default defineNuxtConfig({
+  ssr: false,
+
   alias: {
     '@yunlefun/chat-ui': './packages/chat-ui/index.ts',
     '@chat-generator/datasets': './packages/datasets/index.ts',

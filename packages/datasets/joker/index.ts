@@ -2,6 +2,7 @@ import type { ChatDataSet, ChatSession } from '@yunlefun/chat-ui'
 
 export const jokerChatDataSet: ChatDataSet = {
   id: 'joker',
+  emoji: '🤡',
   name: 'Joker',
   sessions: [
     ...Object.values(import.meta.glob<{
