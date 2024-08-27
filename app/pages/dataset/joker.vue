@@ -4,7 +4,7 @@ const jokerStore = useJokerStore()
 
 <template>
   <div>
-    <h2 class="my-2 text-xl">
+    <h2 class="my-2 text-2xl font-medium">
       🤡 Joker
     </h2>
 
@@ -12,6 +12,7 @@ const jokerStore = useJokerStore()
       <CGAvatarInput v-model:qq="jokerStore.tower.qq" v-model:avatar="jokerStore.tower.avatar" nickname="她/他" />
       <CGAvatarInput v-model:qq="jokerStore.joker.qq" v-model:avatar="jokerStore.joker.avatar" nickname="小丑" />
     </div>
+
     <ChatSessionList />
   </div>
 </template>

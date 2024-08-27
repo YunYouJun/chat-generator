@@ -2,6 +2,8 @@
 import { toBlob, toJpeg, toPixelData, toPng, toSvg } from 'html-to-image'
 import { copyImageToClipboard } from 'copy-image-clipboard'
 import type { Options } from 'html-to-image/lib/types'
+
+import { useToast } from 'primevue/usetoast'
 import type { ChatMember, ChatMessageItem, ChatSession } from '../../types'
 
 const props = defineProps<{
@@ -25,9 +27,9 @@ function getSender(message: ChatMessageItem): ChatMember | undefined {
 
 const sessionRef = ref<HTMLElement | null>(null)
 
-const toPngOptions: Options = {
-}
+const toPngOptions: Options = {}
 
+const toast = useToast()
 function copy() {
   const el = sessionRef.value
   if (!el) {
@@ -35,6 +37,12 @@ function copy() {
   }
   toPng(el, toPngOptions)
     .then((dataUrl: string) => {
+      toast.add({
+        severity: 'success',
+        summary: '拷贝成功',
+        detail: '已将图片拷贝到剪贴板',
+        life: 3000,
+      })
       copyImageToClipboard(dataUrl)
     })
 }
@@ -51,6 +59,13 @@ function download() {
       const filename = `${props.session.id || props.session.name || 'joker'}-chat-generator.png`
       a.download = filename
       a.click()
+
+      toast.add({
+        severity: 'success',
+        summary: '下载成功',
+        detail: '已下载图片',
+        life: 3000,
+      })
     })
 }
 </script>
@@ -58,7 +73,7 @@ function download() {
 <template>
   <div
     ref="sessionRef"
-    class="chat-session-ui w-375px flex flex-col gap-4 rounded-lg bg-#f2f2f2 p-6"
+    class="chat-session-ui w-full flex flex-col gap-4 rounded-lg bg-#f2f2f2 p-6"
     dark="bg-#111"
   >
     <QqChatBubble

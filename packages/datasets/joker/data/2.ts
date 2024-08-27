@@ -10,7 +10,7 @@ export default defineSession({
     },
     {
       content: '月色真美',
-      sender: { type: 'user', qq: 910426929 },
+      sender: { type: 'user',  },
     },
     {
       content: '你是真丑',

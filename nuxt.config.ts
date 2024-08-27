@@ -1,5 +1,7 @@
+import lara from '@primevue/themes/lara'
 import { pwa } from './app/config/pwa'
 import { appDescription } from './app/constants/index'
+import { options } from '#build/eslint.config.mjs'
 
 export default defineNuxtConfig({
   ssr: false,
@@ -16,7 +18,20 @@ export default defineNuxtConfig({
     '@nuxtjs/color-mode',
     '@vite-pwa/nuxt',
     '@nuxt/eslint',
+
+    '@primevue/nuxt-module',
   ],
+
+  primevue: {
+    options: {
+      theme: {
+        preset: lara,
+        options: {
+          darkModeSelector: '.dark',
+        },
+      },
+    },
+  },
 
   components: [
     { path: '~/components', pathPrefix: false },

@@ -10,11 +10,11 @@ export default defineSession({
     },
     {
       content: '真的不行吗',
-      sender: { type: 'user', qq: 910426929 },
+      sender: { type: 'user' },
     },
     {
       content: '可明明你日常也对我很好的啊',
-      sender: { type: 'user', qq: 910426929 },
+      sender: { type: 'user' },
     },
     {
       content: '你也太自作多情了吧，给你几个吃的就喜欢你？',

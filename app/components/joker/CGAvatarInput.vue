@@ -63,7 +63,8 @@ onMounted(() => {
 
     <div class="flex gap-2">
       <input
-        class="w-30 border rounded p-2 text-sm op-60 shadow focus:border-dark outline-none!"
+        class="w-30 border rounded bg-transparent p-2 text-sm text-black/60 shadow focus:border-dark outline-none!"
+        dark="text-white border-white/60 focus:border-white"
         type="number"
         :value="qq" @input="updateQQ"
         @keyup.enter="queryQQAvatar(qq || 0)"

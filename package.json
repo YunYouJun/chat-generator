@@ -23,6 +23,8 @@
     "@nuxt/eslint": "^0.5.3",
     "@nuxtjs/color-mode": "^3.4.4",
     "@pinia/nuxt": "^0.5.4",
+    "@primevue/nuxt-module": "^4.0.5",
+    "@primevue/themes": "^4.0.5",
     "@unocss/eslint-config": "^0.62.3",
     "@unocss/nuxt": "^0.62.3",
     "@vite-pwa/nuxt": "^0.10.1",
@@ -36,11 +38,9 @@
     "lru-cache": "^11.0.0",
     "nuxt": "^3.13.0",
     "pinia": "^2.2.2",
+    "primevue": "^4.0.5",
     "sass": "^1.77.8",
     "typescript": "^5.5.4",
     "vue-tsc": "^2.0.29"
-  },
-  "dependencies": {
-    "gif.js": "^0.2.0"
   }
 }
