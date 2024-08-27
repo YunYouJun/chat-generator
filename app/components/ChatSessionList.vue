@@ -3,8 +3,13 @@ import { jokerChatDataSet } from '~~/packages/datasets'
 
 const jokerStore = useJokerStore()
 
-const sessions = computed(() => {
-  return jokerChatDataSet.sessions.map((session) => {
+const sessions = ref(jokerChatDataSet.sessions)
+
+watch(() => [
+  jokerStore.joker.avatar,
+  jokerStore.tower.avatar,
+], () => {
+  sessions.value = jokerChatDataSet.sessions.map((session) => {
     session.messages.forEach((message) => {
       if (typeof message.sender === 'object' && message.sender.type === 'user' && jokerStore.joker.avatar) {
         message.sender.avatar = jokerStore.joker.avatar
