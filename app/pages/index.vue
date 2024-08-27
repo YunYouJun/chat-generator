@@ -24,8 +24,11 @@ const collections = {
         :key="key"
         :to="`/dataset/${key}`"
       >
-        <CGCard>
-          <div class="flex gap-2">
+        <CGCard class="relative overflow-hidden">
+          <div
+            class="absolute inset-0 flex items-center justify-center gap-2 rounded bg-white/90 text-5xl transition-all duration-700 hover:(bg-white/50 text-6xl)"
+            dark="bg-black/90 text-white/90 hover:bg-black/50"
+          >
             <span>{{ dataset.emoji }}</span>
             <span> {{ dataset.name }}</span>
           </div>

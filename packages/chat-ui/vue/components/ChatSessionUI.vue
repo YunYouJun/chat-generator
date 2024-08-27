@@ -73,7 +73,7 @@ function download() {
 <template>
   <div
     ref="sessionRef"
-    class="chat-session-ui w-full flex flex-col gap-4 rounded-lg bg-#f2f2f2 p-6"
+    class="chat-session-ui w-full flex flex-col gap-4 bg-#f2f2f2 p-6"
     dark="bg-#111"
   >
     <QqChatBubble
@@ -84,7 +84,7 @@ function download() {
     />
   </div>
 
-  <div v-if="showAction" class="mt-1 w-full flex gap-2 rounded">
+  <div v-if="showAction" class="mt-1 w-full flex gap-1 rounded">
     <CGButton @click="copy">
       <div i-ri:file-copy-2-line />
     </CGButton>
