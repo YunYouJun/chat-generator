@@ -28,6 +28,8 @@ watch(() => [
     })
     return session
   })
+}, {
+  immediate: true,
 })
 
 onMounted(() => {
