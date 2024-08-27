@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import GIF from 'gif.js'
-import { toPng } from 'html-to-image'
 import type { ChatSession } from '~~/packages/chat-ui'
 import { jokerChatDataSet } from '~~/packages/datasets'
 

@@ -1,7 +1,6 @@
 import lara from '@primevue/themes/lara'
 import { pwa } from './app/config/pwa'
 import { appDescription } from './app/constants/index'
-import { options } from '#build/eslint.config.mjs'
 
 export default defineNuxtConfig({
   ssr: false,

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { toBlob, toJpeg, toPixelData, toPng, toSvg } from 'html-to-image'
+import { toPng } from 'html-to-image'
 import { copyImageToClipboard } from 'copy-image-clipboard'
 import type { Options } from 'html-to-image/lib/types'
 

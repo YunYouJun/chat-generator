@@ -1,4 +1,4 @@
-import { defineSession } from '../../utils'
+import { defineSession } from '../utils'
 
 export default defineSession({
   id: 'chidejiuxihuanni',
