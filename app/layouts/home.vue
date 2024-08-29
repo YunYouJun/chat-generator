@@ -6,5 +6,6 @@
       [Home Layout]
     </div> -->
     <DarkToggle class="absolute right-5 top-5" />
+    <TheFooter />
   </main>
 </template>
