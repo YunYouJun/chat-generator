@@ -1,4 +1,4 @@
 /* override primevue */
 :root {
-  --p-toast-width: 300px;
+  --p-toast-width: 300px !important;
 }
