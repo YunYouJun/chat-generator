@@ -53,7 +53,11 @@ const sessionRef = ref<HTMLElement | null>(null)
 const toPngOptions: Options = {}
 
 const toast = useToast()
-function copy() {
+
+/**
+ * copy image
+ */
+function copyImage() {
   const el = sessionRef.value
   if (!el) {
     return
@@ -67,6 +71,39 @@ function copy() {
         life: 3000,
       })
       copyImageToClipboard(dataUrl)
+    })
+}
+
+const { copy } = useClipboard()
+/**
+ * copy text
+ * @example
+ * Q: Hello!
+ * A: Hi!
+ */
+function copyText() {
+  const el = sessionRef.value
+  if (!el) {
+    return
+  }
+
+  const qaText = props.session.messages
+    .map((message) => {
+      if (typeof message.sender === 'object' && message.sender.type === 'user') {
+        return `A: ${message.content}`
+      }
+      return `Q: ${message.content}`
+    })
+    .join('\n')
+
+  copy(qaText)
+    .then(() => {
+      toast.add({
+        severity: 'success',
+        summary: '拷贝成功',
+        detail: '已将文本拷贝到剪贴板',
+        life: 3000,
+      })
     })
 }
 
@@ -108,7 +145,10 @@ function download() {
   </div>
 
   <div v-if="showAction" class="mt-1 w-full flex gap-1 rounded">
-    <CGButton @click="copy">
+    <CGButton @click="copyImage">
+      <div i-ri:image-line />
+    </CGButton>
+    <CGButton @click="copyText">
       <div i-ri:file-copy-2-line />
     </CGButton>
     <CGButton @click="download">
