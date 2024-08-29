@@ -12,6 +12,15 @@ const props = defineProps<{
    * show action buttons
    */
   showAction?: boolean
+
+  /**
+   * self avatar
+   */
+  selfAvatar?: string
+  /**
+   * other avatar
+   */
+  otherAvatar?: string
 }>()
 
 /**
@@ -21,6 +30,20 @@ const props = defineProps<{
 function getSender(message: ChatMessageItem): ChatMember | undefined {
   if (typeof message.sender === 'string') {
     return props.session.members.find(member => member.id === message.sender)
+  }
+
+  if (props.selfAvatar && message.sender?.type === 'user') {
+    message.sender.avatar = props.selfAvatar
+  }
+  else if (props.otherAvatar) {
+    if (message.sender) {
+      message.sender.avatar = props.otherAvatar
+    }
+    else {
+      message.sender = {
+        avatar: props.otherAvatar,
+      }
+    }
   }
   return message.sender
 }

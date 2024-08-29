@@ -34,7 +34,7 @@ const senderAvatar = computedAsync(async () => {
   }
 })
 
-const avatar = computed(() => {
+const iAvatar = computed(() => {
   return senderAvatar.value
 })
 </script>
@@ -49,8 +49,8 @@ const avatar = computed(() => {
     <div class="size-9 rounded-full bg-blue">
       <Transition mode="out-in">
         <img
-          v-if="avatar"
-          :src="avatar"
+          v-if="iAvatar"
+          :src="iAvatar"
           alt="avatar" class="size-9 rounded-full"
         >
       </Transition>

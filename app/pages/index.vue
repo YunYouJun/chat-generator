@@ -9,6 +9,18 @@ definePageMeta({
 
 const collections = {
   joker: jokerChatDataSet,
+  loveSF: {
+    id: 'loveSF',
+    name: '科幻故事',
+    emoji: '💖',
+    sessions: [],
+  },
+  pua: {
+    id: 'pua',
+    name: 'PUA',
+    emoji: '💪',
+    sessions: [],
+  },
 }
 </script>
 
@@ -18,7 +30,7 @@ const collections = {
       <div i-ri:message-2-line />
       <span>聊天记录合集</span>
     </h1>
-    <div class="mt-4 flex flex-wrap">
+    <div class="mt-8 flex flex-wrap items-center justify-center gap-4">
       <RouterLink
         v-for="(dataset, key) in collections"
         :key="key"
@@ -32,8 +44,14 @@ const collections = {
             <span>{{ dataset.emoji }}</span>
             <span> {{ dataset.name }}</span>
           </div>
-          <div>
-            <ChatSessionUI v-if="dataset.sessions[0]" :session="dataset.sessions[0]" />
+          <div class="h-70 flex items-end justify-center overflow-hidden">
+            <ChatSessionUI
+              v-if="dataset.sessions[0]"
+              :session="dataset.sessions[0]"
+            />
+            <div v-else class="text-gray-80 p-6">
+              暂无聊天记录
+            </div>
           </div>
         </CGCard>
       </RouterLink>

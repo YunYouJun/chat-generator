@@ -3,12 +3,22 @@ import { useStorage } from '@vueuse/core'
 import type { ChatMember } from '~~/packages/chat-ui'
 
 export const useJokerStore = defineStore('joker', () => {
+  const route = useRoute()
+  const jokerQQ = Number.parseInt(route.query.jokerQQ as string | '910426929')
+  const towerQQ = Number.parseInt(route.query.towerQQ as string)
+
   const joker = useStorage<ChatMember>('cg:joker:joker', {
-    qq: 910426929,
+    qq: jokerQQ,
   })
   const tower = useStorage<ChatMember>('cg:joker:tower', {
-    qq: undefined,
+    qq: towerQQ,
   })
+
+  // init
+  if (jokerQQ)
+    joker.value.qq = jokerQQ
+  if (towerQQ)
+    tower.value.qq = towerQQ
 
   return {
     joker,
