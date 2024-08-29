@@ -51,7 +51,8 @@ const iAvatar = computed(() => {
         <img
           v-if="iAvatar"
           :src="iAvatar"
-          alt="avatar" class="size-9 rounded-full"
+          alt="avatar"
+          class="size-9 rounded-full object-cover object-center"
         >
       </Transition>
     </div>
