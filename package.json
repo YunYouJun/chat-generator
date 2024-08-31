@@ -7,6 +7,7 @@
     "build": "nuxi build",
     "dev:pwa": "VITE_PLUGIN_PWA=true nuxi dev",
     "dev": "nuxi dev",
+    "sheet": "tsx scripts/sheet.ts",
     "generate": "nuxi generate",
     "prepare": "nuxi prepare",
     "start": "node .output/server/index.mjs",
@@ -15,17 +16,18 @@
     "typecheck": "vue-tsc --noEmit"
   },
   "devDependencies": {
-    "@antfu/eslint-config": "^2.27.3",
+    "@antfu/eslint-config": "^3.0.0",
     "@chat-generator/datasets": "workspace:*",
     "@iconify-json/carbon": "^1.1.37",
     "@iconify-json/ri": "^1.1.22",
     "@iconify-json/twemoji": "^1.1.16",
     "@nuxt/devtools": "^1.4.1",
-    "@nuxt/eslint": "^0.5.3",
+    "@nuxt/eslint": "^0.5.4",
     "@nuxtjs/color-mode": "^3.4.4",
     "@pinia/nuxt": "^0.5.4",
     "@primevue/nuxt-module": "^4.0.5",
     "@primevue/themes": "^4.0.5",
+    "@types/fs-extra": "^11.0.4",
     "@unocss/eslint-config": "^0.62.3",
     "@unocss/nuxt": "^0.62.3",
     "@vite-pwa/nuxt": "^0.10.1",
@@ -35,6 +37,7 @@
     "copy-image-clipboard": "^2.1.2",
     "eslint": "^9.9.1",
     "eslint-plugin-format": "^0.1.2",
+    "fs-extra": "^11.2.0",
     "html-to-image": "^1.11.11",
     "lru-cache": "^11.0.0",
     "nuxt": "^3.13.0",
@@ -42,6 +45,6 @@
     "primevue": "^4.0.5",
     "sass": "^1.77.8",
     "typescript": "^5.5.4",
-    "vue-tsc": "^2.0.29"
+    "vue-tsc": "^2.1.4"
   }
 }
