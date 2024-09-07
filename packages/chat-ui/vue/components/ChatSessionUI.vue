@@ -5,6 +5,7 @@ import { toPng } from 'html-to-image'
 
 import { useToast } from 'primevue/usetoast'
 import type { Options } from 'html-to-image/lib/types'
+import { A_AVATAR_SYMBOL, Q_AVATAR_SYMBOL } from '../constants'
 import type { ChatMember, ChatMessageItem, ChatSession } from '../../types'
 
 const props = defineProps<{
@@ -15,14 +16,20 @@ const props = defineProps<{
   showAction?: boolean
 
   /**
-   * self avatar
-   */
-  selfAvatar?: string
-  /**
+   * Q avatar
    * other avatar
    */
-  otherAvatar?: string
+  qAvatar?: string
+  /**
+   * A avatar
+   * self avatar
+   */
+  aAvatar?: string
 }>()
+
+// provide for bubble
+provide(Q_AVATAR_SYMBOL, computed(() => props.qAvatar || ''))
+provide(A_AVATAR_SYMBOL, computed(() => props.aAvatar || ''))
 
 /**
  * get sender from id
@@ -31,20 +38,6 @@ const props = defineProps<{
 function getSender(message: ChatMessageItem): ChatMember | undefined {
   if (typeof message.sender === 'string') {
     return props.session.members?.find(member => member.id === message.sender)
-  }
-
-  if (props.selfAvatar && message.sender?.type === 'user') {
-    message.sender.avatar = props.selfAvatar
-  }
-  else if (props.otherAvatar) {
-    if (message.sender) {
-      message.sender.avatar = props.otherAvatar
-    }
-    else {
-      message.sender = {
-        avatar: props.otherAvatar,
-      }
-    }
   }
   return message.sender
 }
@@ -60,7 +53,6 @@ const parsedQAMessages = computed(() => {
 const toPngOptions: Options = {}
 
 const toast = useToast()
-
 /**
  * copy image
  */

@@ -29,8 +29,8 @@ onMounted(() => {
       <ChatSessionUI
         :session="session"
         :show-action="true"
-        :self-avatar="jokerStore.joker.avatar"
-        :other-avatar="jokerStore.tower.avatar"
+        :q-avatar="jokerStore.tower.avatar"
+        :a-avatar="jokerStore.joker.avatar"
       />
     </div>
   </div>

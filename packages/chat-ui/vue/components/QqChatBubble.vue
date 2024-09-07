@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { getQQAvatar } from '../../utils'
+import { A_AVATAR_SYMBOL, Q_AVATAR_SYMBOL } from '../constants'
 import type { ChatMember, ChatMessageItem } from '../../types'
 
 const props = defineProps<{
@@ -34,8 +35,14 @@ const senderAvatar = computedAsync(async () => {
   }
 })
 
+const aAvatar = inject(A_AVATAR_SYMBOL)
+const qAvatar = inject(Q_AVATAR_SYMBOL)
+const injectedAvatar = computed(() => {
+  return props.sender?.type === 'user' ? aAvatar?.value : qAvatar?.value
+})
+
 const iAvatar = computed(() => {
-  return senderAvatar.value
+  return injectedAvatar.value || senderAvatar.value
 })
 </script>
 
