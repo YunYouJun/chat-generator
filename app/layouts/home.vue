@@ -3,7 +3,6 @@
     <div class="relative p-6">
       <slot />
 
-      <DarkToggle class="absolute right-5 top-5" />
       <TheFooter />
     </div>
     <!-- <Footer />

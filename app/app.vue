@@ -13,7 +13,7 @@ useHead({
 </script>
 
 <template>
-  <SubmitBanner />
+  <TheMenuBar />
   <VitePwaManifest />
   <NuxtLayout>
     <NuxtPage />

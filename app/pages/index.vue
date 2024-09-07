@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { jokerChatDataSet } from '~~/packages/datasets'
+import { collections } from '~/config'
 
 definePageMeta({
   layout: 'home',
@@ -16,31 +17,15 @@ useHead({
 })
 
 // const online = useOnline()
-
-const collections = {
-  joker: jokerChatDataSet,
-  loveSF: {
-    id: 'loveSF',
-    name: '科幻故事',
-    emoji: '💖',
-    sessions: [],
-  },
-  pua: {
-    id: 'pua',
-    name: 'PUA',
-    emoji: '💪',
-    sessions: [],
-  },
-}
 </script>
 
 <template>
   <div>
-    <h1 class="flex items-center justify-center gap-2 text-xl">
+    <!-- <h1 class="flex items-center justify-center gap-2 text-xl">
       <div i-ri:message-2-line />
       <span>聊天记录合集</span>
-    </h1>
-    <div class="mt-8 flex flex-wrap items-center justify-center gap-4">
+    </h1> -->
+    <div class="flex flex-wrap items-center justify-center gap-4">
       <RouterLink
         v-for="(dataset, key) in collections"
         :key="key"
