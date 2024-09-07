@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { parseQAMessage } from '~~/packages/datasets/utils'
+import { convertMessagesToQAText, parseQAMessage } from '~~/packages/datasets/utils'
 import { copyImageToClipboard } from 'copy-image-clipboard'
 import { toPng } from 'html-to-image'
 
@@ -94,13 +94,7 @@ function copyText() {
     return
   }
 
-  const qaText = parsedQAMessages.value.map((message) => {
-    if (typeof message.sender === 'object' && message.sender.type === 'user') {
-      return `A: ${message.content}`
-    }
-    return `Q: ${message.content}`
-  }).join('\n')
-
+  const qaText = convertMessagesToQAText(parsedQAMessages.value)
   copy(qaText)
     .then(() => {
       toast.add({

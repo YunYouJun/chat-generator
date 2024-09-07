@@ -60,18 +60,29 @@ const iAvatar = computed(() => {
     <div
       class="flex flex-1 flex-col items-start gap-1"
       :class="{
-        'items-end': sender?.type === 'user',
+        'items-end': isUser,
       }"
     >
       <div v-if="sender?.nickname" class="qq-chat-nickname text-xs text-#808080">
         {{ sender?.nickname }}
       </div>
       <div
-        class="qq-chat-bubble rounded-lg bg-white p-2"
-        text="sm left"
-        dark="bg-#262626 text-white"
+        class="flex items-center gap-2"
+        :class="{
+          'flex-row-reverse': !isUser,
+        }"
       >
-        {{ message.content }}
+        <div
+          v-if="message.banned"
+          class="i-ri-error-warning-fill text-base text-#de705a"
+        />
+        <div
+          class="qq-chat-bubble flex-1 rounded-lg bg-white p-2"
+          text="sm left"
+          dark="bg-#262626 text-white"
+        >
+          {{ message.content }}
+        </div>
       </div>
     </div>
 

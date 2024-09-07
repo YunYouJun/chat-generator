@@ -86,4 +86,8 @@ export interface ChatMessageItem {
    * @default 'text'
    */
   type?: 'text' | 'image'
+  /**
+   * 被拉黑 感叹号
+   */
+  banned?: boolean
 }

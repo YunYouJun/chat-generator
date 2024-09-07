@@ -13,15 +13,40 @@ export function parseQAMessage(qaMessage: string) {
   const messages = qaMessage.split('\n')
   const parsedMessages: ChatMessageItem[] = []
   messages.forEach((message) => {
-    const sender: ChatMessageItem['sender'] = message.startsWith('A:') ? { type: 'user' } : undefined
+    const prefix = message.split(': ')[0]
+    const content = message.replace(`${prefix}: `, '')
+    if (!prefix)
+      return
+    const sender: ChatMessageItem['sender'] = prefix.startsWith('A') ? { type: 'user' } : undefined
+    let parsedMsg: ChatMessageItem = { content: '' }
     if (!sender) {
       message = message.replace(/^Q:? ?/, '')
-      parsedMessages.push({ content: message })
+      parsedMsg = { content }
     }
     else {
       message = message.replace(/^A:? ?/, '')
-      parsedMessages.push({ content: message, sender })
+      parsedMsg = { content, sender }
     }
+
+    // banned
+    if (prefix.endsWith('!')) {
+      parsedMsg.banned = true
+    }
+    parsedMessages.push(parsedMsg)
   })
   return parsedMessages
+}
+
+/**
+ * Convert a list of chat messages to QA message text.
+ */
+export function convertMessagesToQAText(messages: ChatMessageItem[]) {
+  return messages.map((message) => {
+    if (typeof message.sender === 'object' && message.sender.type === 'user') {
+      return `A${
+        message.banned ? '!' : ''
+      }: ${message.content}`
+    }
+    return `Q: ${message.content}`
+  }).join('\n')
 }
