@@ -4,7 +4,7 @@ import { defineDataSet } from '../utils'
 export const jokerChatDataSet = defineDataSet({
   id: 'joker',
   emoji: '🤡',
-  name: 'Joker',
+  name: '小丑',
   sessions: [
     // ...Object.values(import.meta.glob<{
     //   default: ChatSession

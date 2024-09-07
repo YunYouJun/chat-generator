@@ -27,6 +27,11 @@ const items = ref([
     to: submitSheetUrl,
     target: '_blank',
   },
+  {
+    label: '关于',
+    icon: 'i-ri-information-line',
+    to: '/about',
+  },
 ])
 </script>
 
@@ -38,8 +43,12 @@ const items = ref([
       </div>
     </template> -->
     <template #item="{ item, props, hasSubmenu, root }">
-      <NuxtLink v-ripple class="flex items-center" v-bind="props.action" :to="item.to" :target="item.target">
+      <NuxtLink
+        v-ripple
+        class="flex items-center" v-bind="props.action" :to="item.to" :target="item.target"
+      >
         <span :class="item.icon" />
+        <span v-if="item.emoji">{{ item.emoji }}</span>
         <span class="ml-1">{{ item.label }}</span>
         <Badge v-if="item.badge" :class="{ 'ml-auto': !root, 'ml-2': root }" :value="item.badge" />
         <span v-if="item.shortcut" class="border-surface bg-emphasis text-muted-color ml-auto border rounded p-1 text-xs">{{ item.shortcut }}</span>
