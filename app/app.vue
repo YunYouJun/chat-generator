@@ -3,6 +3,12 @@ import { appName } from '~/constants'
 
 useHead({
   title: appName,
+  meta: [
+    {
+      name: 'keywords',
+      content: '聊天记录, 生成器, 小丑, 模拟器',
+    },
+  ],
 })
 </script>
 

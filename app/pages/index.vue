@@ -5,6 +5,16 @@ definePageMeta({
   layout: 'home',
 })
 
+useHead({
+  link: [
+    {
+      rel: 'icon',
+      type: 'image/svg+xml',
+      href: '/noto:left-speech-bubble.svg',
+    },
+  ],
+})
+
 // const online = useOnline()
 
 const collections = {

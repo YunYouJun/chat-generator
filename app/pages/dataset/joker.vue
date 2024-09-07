@@ -1,6 +1,24 @@
 <script setup lang="ts">
 const jokerStore = useJokerStore()
 
+useHead({
+  title: '小丑 - Joker',
+  meta: [
+    {
+      name: 'keywords',
+      content: '聊天记录, 生成器, 小丑, 模拟器',
+    },
+  ],
+  // favicon
+  link: [
+    {
+      rel: 'icon',
+      type: 'image/svg+xml',
+      href: '/icons/noto:clown-face.svg',
+    },
+  ],
+})
+
 const isExchanged = ref(false)
 
 /**

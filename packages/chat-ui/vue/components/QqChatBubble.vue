@@ -74,7 +74,7 @@ const iAvatar = computed(() => {
       >
         <div
           v-if="message.banned"
-          class="i-ri-error-warning-fill text-base text-#de705a"
+          class="i-ri-error-warning-fill text-base text-#f74c30"
         />
         <div
           class="qq-chat-bubble flex-1 rounded-lg bg-white p-2"
