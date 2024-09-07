@@ -9,7 +9,7 @@ const items = ref([
     to: '/',
   },
   {
-    label: '分类',
+    label: '十景',
     icon: 'i-ri-menu-search-line',
     items: Object.keys(collections).map((key) => {
       const collection = collections[key as keyof typeof collections]

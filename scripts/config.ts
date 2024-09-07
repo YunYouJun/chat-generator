@@ -9,6 +9,7 @@ export const spreadsheetToken = 'EZoZsREUjhDsvEt5iYUct0IInkf'
 export const SHEET_MAP = {
   joker: '6a7dc9',
   loveSF: 'zuMbfa',
+  pua: 'Rrssvg',
 }
 
 export type SheetKey = keyof typeof SHEET_MAP

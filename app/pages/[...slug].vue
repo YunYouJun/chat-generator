@@ -4,6 +4,6 @@ import 'star-markdown-css/src/scss/theme/yun.scss'
 
 <template>
   <main>
-    <ContentDoc class="markdown-body px-4 text-left md:px-8" />
+    <ContentDoc class="markdown-body m-auto max-w-2xl px-4 text-left prose md:px-8" />
   </main>
 </template>

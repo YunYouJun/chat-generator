@@ -19,4 +19,16 @@ export const collections = {
     emoji: '💪',
     sessions: [],
   },
+  kfc: {
+    id: 'KFC',
+    name: '疯狂星期四',
+    emoji: '🍗',
+    sessions: [],
+  },
+  xiatou: {
+    id: 'xiatou',
+    name: '下头语录',
+    emoji: '🦐',
+    sessions: [],
+  },
 }

@@ -27,6 +27,7 @@ export default defineNuxtConfig({
     '@nuxt/eslint',
     '@nuxt/content',
     '@primevue/nuxt-module',
+    '@nuxt/image',
   ],
 
   primevue: {
