@@ -64,7 +64,7 @@ importers:
         version: link:packages/chat-ui
       '@yunlefun/feishu':
         specifier: workspace:*
-        version: link:packages/feishu-sheet
+        version: link:packages/feishu
       consola:
         specifier: ^3.2.3
         version: 3.2.3
@@ -116,7 +116,7 @@ importers:
         specifier: workspace:*
         version: link:../chat-ui
 
-  packages/feishu-sheet:
+  packages/feishu:
     devDependencies:
       '@larksuiteoapi/node-sdk':
         specifier: ^1.33.0

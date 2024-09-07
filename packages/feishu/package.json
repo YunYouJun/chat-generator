@@ -1,0 +1,24 @@
+{
+  "name": "@yunlefun/feishu",
+  "type": "module",
+  "version": "0.0.1",
+  "description": "Feishu Utils for YunLeFun",
+  "author": {
+    "name": "YunYouJun"
+  },
+  "license": "ISC",
+  "keywords": [
+    "feishu"
+  ],
+  "exports": {
+    ".": "./index.ts"
+  },
+  "main": "index.ts",
+  "module": "index.ts",
+  "scripts": {
+    "sheet": "tsx index.ts"
+  },
+  "devDependencies": {
+    "@larksuiteoapi/node-sdk": "^1.33.0"
+  }
+}
