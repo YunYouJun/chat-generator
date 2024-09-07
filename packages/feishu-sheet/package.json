@@ -5,6 +5,11 @@
   "author": "",
   "license": "ISC",
   "keywords": [],
+  "exports": {
+    ".": {
+      "import": "./index.ts"
+    }
+  },
   "main": "index.ts",
   "scripts": {
     "sheet": "tsx index.ts",
