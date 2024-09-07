@@ -1,25 +1,17 @@
-import consola from 'consola'
 import { sleep } from '@antfu/utils'
+import consola from 'consola'
 import { client } from './utils'
-
-/**
- * 表格：聊天记录合集
- * @see https://open.feishu.cn/document/server-docs/docs/sheets-v3/overview
- * 可以先创建表格文件，拿到表格的 token，再转入云文档
- */
-const spreadsheetToken = 'EZoZsREUjhDsvEt5iYUct0IInkf'
-const SHEET_MAP = {
-  joker: '6a7dc9',
-}
 
 /**
  * 获取表格 token
  * 对于知识库中的电子表格，你需调用获取知识空间节点信息接口来获取电子表格的 obj_token。此时，该 obj_token 也是该表格的 spreadsheetToken。
  */
-export async function getSheetToken() {
+export async function getSheetToken(params: {
+  token: string
+}) {
   const res = await client.wiki.v2.space.getNode({
     params: {
-      token: spreadsheetToken,
+      token: params.token,
       obj_type: 'sheet',
     },
   }).catch((e) => {
@@ -32,6 +24,8 @@ export async function getSheetToken() {
  * 从飞书表格导出数据
  */
 export async function downloadCSV(options: {
+  token: string
+  sub_id: string
   csvFilePath: string
 }) {
   // 创建导出任务
@@ -39,8 +33,8 @@ export async function downloadCSV(options: {
     data: {
       file_extension: 'csv',
       type: 'sheet',
-      token: spreadsheetToken,
-      sub_id: SHEET_MAP.joker,
+      token: options.token,
+      sub_id: options.sub_id,
     },
   }).catch((e) => {
     consola.error(e.message)
@@ -56,7 +50,7 @@ export async function downloadCSV(options: {
   for (let i = 0; i < 10; i++) {
     const result = await client.drive.exportTask.get({
       params: {
-        token: spreadsheetToken,
+        token: options.token,
       },
       path: {
         ticket: res.data.ticket,
@@ -75,14 +69,12 @@ export async function downloadCSV(options: {
     path: {
       file_token,
     },
+  }).then((res) => {
+    if (res.writeFile) {
+      res.writeFile(options.csvFilePath)
+      consola.success(`下载数据文件：${options.csvFilePath}`)
+    }
+  }).catch((e) => {
+    consola.error(e.msg)
   })
-    .then((res) => {
-      if (res.writeFile) {
-        res.writeFile(options.csvFilePath)
-        consola.success(`下载数据文件：${options.csvFilePath}`)
-      }
-    })
-    .catch((e) => {
-      consola.error(e.msg)
-    })
 }

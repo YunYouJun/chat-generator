@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import type { ChatMember, ChatMessageItem } from '../../types'
 import { getQQAvatar } from '../../utils'
+import type { ChatMember, ChatMessageItem } from '../../types'
 
 const props = defineProps<{
   sender?: ChatMember

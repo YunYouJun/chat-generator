@@ -50,17 +50,17 @@ export interface ChatSession {
    */
   id?: string | number
   /**
-   * 会话名称
+   * 会话标题
    */
-  name?: string
+  title?: string
   /**
    * 会话成员
    */
-  members: ChatMember[]
+  members?: ChatMember[]
   /**
    * 会话消息
    */
-  messages: ChatMessageItem[]
+  messages: string | ChatMessageItem[]
 }
 
 export interface ChatMessageItem {

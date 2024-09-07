@@ -1,9 +1,10 @@
 <script setup lang="ts">
-import { toPng } from 'html-to-image'
+import { parseQAMessage } from '~~/packages/datasets/utils'
 import { copyImageToClipboard } from 'copy-image-clipboard'
-import type { Options } from 'html-to-image/lib/types'
+import { toPng } from 'html-to-image'
 
 import { useToast } from 'primevue/usetoast'
+import type { Options } from 'html-to-image/lib/types'
 import type { ChatMember, ChatMessageItem, ChatSession } from '../../types'
 
 const props = defineProps<{
@@ -29,7 +30,7 @@ const props = defineProps<{
  */
 function getSender(message: ChatMessageItem): ChatMember | undefined {
   if (typeof message.sender === 'string') {
-    return props.session.members.find(member => member.id === message.sender)
+    return props.session.members?.find(member => member.id === message.sender)
   }
 
   if (props.selfAvatar && message.sender?.type === 'user') {
@@ -49,6 +50,12 @@ function getSender(message: ChatMessageItem): ChatMember | undefined {
 }
 
 const sessionRef = ref<HTMLElement | null>(null)
+const parsedQAMessages = computed(() => {
+  if (typeof props.session.messages === 'string') {
+    return parseQAMessage(props.session.messages)
+  }
+  return props.session.messages
+})
 
 const toPngOptions: Options = {}
 
@@ -87,14 +94,12 @@ function copyText() {
     return
   }
 
-  const qaText = props.session.messages
-    .map((message) => {
-      if (typeof message.sender === 'object' && message.sender.type === 'user') {
-        return `A: ${message.content}`
-      }
-      return `Q: ${message.content}`
-    })
-    .join('\n')
+  const qaText = parsedQAMessages.value.map((message) => {
+    if (typeof message.sender === 'object' && message.sender.type === 'user') {
+      return `A: ${message.content}`
+    }
+    return `Q: ${message.content}`
+  }).join('\n')
 
   copy(qaText)
     .then(() => {
@@ -116,7 +121,7 @@ function download() {
     .then((dataUrl: string) => {
       const a = document.createElement('a')
       a.href = dataUrl
-      const filename = `${props.session.id || props.session.name || 'joker'}-chat-generator.png`
+      const filename = `${props.session.id || props.session.title || 'joker'}-chat-generator.png`
       a.download = filename
       a.click()
 
@@ -137,7 +142,7 @@ function download() {
     dark="bg-#111"
   >
     <QqChatBubble
-      v-for="(message, i) in session.messages"
+      v-for="(message, i) in parsedQAMessages"
       :key="i"
       :sender="getSender(message)"
       :message="message"

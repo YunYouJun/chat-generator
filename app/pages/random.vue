@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import type { ChatSession } from '~~/packages/chat-ui'
 import { jokerChatDataSet } from '~~/packages/datasets'
+import type { ChatSession } from '~~/packages/chat-ui'
 
 const session = ref<ChatSession>()
 

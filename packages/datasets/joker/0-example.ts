@@ -2,7 +2,7 @@ import { defineSession } from '../utils'
 
 export default defineSession({
   id: 'chidejiuxihuanni',
-  name: 'Example',
+  title: 'Example',
   members: [
     {
       id: 'joker',

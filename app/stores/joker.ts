@@ -1,5 +1,5 @@
-import { acceptHMRUpdate, defineStore } from 'pinia'
 import { useStorage } from '@vueuse/core'
+import { acceptHMRUpdate, defineStore } from 'pinia'
 import type { ChatMember } from '~~/packages/chat-ui'
 
 export const useJokerStore = defineStore('joker', () => {

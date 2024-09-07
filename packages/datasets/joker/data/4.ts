@@ -2,7 +2,7 @@ import { defineSession } from '../../utils'
 
 export default defineSession({
   id: 4,
-  name: '我也想要男朋友',
+  title: '我也想要男朋友',
   members: [],
   messages: [
     { content: '我也想要男朋友' },

@@ -24,7 +24,7 @@ onMounted(() => {
       class="masonry-item mx-auto mb-4 w-375px break-inside-avoid"
     >
       <div class="p-2 text-sm op-60">
-        {{ session.name }}
+        {{ session.title }}
       </div>
       <ChatSessionUI
         :session="session"
