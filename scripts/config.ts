@@ -10,6 +10,7 @@ export const SHEET_MAP = {
   joker: '6a7dc9',
   loveSF: 'zuMbfa',
   pua: 'Rrssvg',
+  xiatou: 'yndDUM',
 }
 
 export type SheetKey = keyof typeof SHEET_MAP

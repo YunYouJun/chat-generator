@@ -1,9 +1,12 @@
 <script setup lang="ts">
-import { jokerChatDataSet } from '~~/packages/datasets'
+import type { ChatDataSet } from '~~/packages/chat-ui'
 
+withDefaults(defineProps<{
+  sessions: ChatDataSet['sessions']
+}>(), {
+  sessions: () => [],
+})
 const jokerStore = useJokerStore()
-
-const sessions = ref(jokerChatDataSet.sessions)
 
 onMounted(() => {
   // vanilla JS

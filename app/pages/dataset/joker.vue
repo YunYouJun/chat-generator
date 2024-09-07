@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { DATASETS } from '~~/packages/datasets'
+
 const jokerStore = useJokerStore()
 
 useHead({
@@ -20,6 +22,7 @@ useHead({
 })
 
 const isExchanged = ref(false)
+const sessions = computed(() => DATASETS.find(dataset => dataset.id === 'joker')?.sessions || [])
 
 /**
  * 立场交换
@@ -94,6 +97,6 @@ function copyLink() {
       <CGAvatarInput v-model:qq="jokerStore.joker.qq" v-model:avatar="jokerStore.joker.avatar" nickname="小丑" />
     </div>
 
-    <ChatSessionList />
+    <ChatSessionList :sessions="sessions" />
   </div>
 </template>

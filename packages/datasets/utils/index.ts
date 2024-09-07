@@ -16,7 +16,7 @@ export function parseQAMessage(qaMessage: string) {
     if (!prefix)
       return
     const sender: ChatMessageItem['sender'] = prefix.startsWith('A') ? { type: 'user' } : undefined
-    let parsedMsg: ChatMessageItem = { content: '' }
+    let parsedMsg: ChatMessageItem = { content: message }
     if (!sender) {
       message = message.replace(/^Q:? ?/, '')
       parsedMsg = { content }
