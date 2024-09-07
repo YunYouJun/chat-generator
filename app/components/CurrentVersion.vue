@@ -9,10 +9,10 @@ const buildDate = (new Date(Number.parseInt(now))).toLocaleDateString()
 <template>
   <div v-if="commitSha && buildDate" mb-2 text-xs op-70>
     <span>
-      当前版本 v{{ pkg.version }}-
+      当前版本 v{{ pkg.version }}
     </span>
     <span>
-      {{ buildDate }}
+      - {{ buildDate }} -
     </span>
     <span>
       <a border="b-1 dashed" :href="`https://github.com/YunYouJun/chat-generator/commit/${commitSha}`" target="_blank" alt="Cook | GitHub Commit">

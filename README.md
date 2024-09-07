@@ -3,6 +3,7 @@
 ## Collections
 
 - [Joker](https://chat.yunyoujun.cn/joker/): 结局选择器
+- [表格投稿](https://yunlefun.feishu.cn/wiki/CP3LwoFW8idLg9kmTxhcPuLSnBf?sheet=6a7dc9)
 
 ## TODO
 

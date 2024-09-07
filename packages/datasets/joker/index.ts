@@ -1,7 +1,7 @@
-import type { ChatDataSet } from '@yunlefun/chat-ui'
 import jokerData from '../csv/joker.json'
+import { defineDataSet } from '../utils'
 
-export const jokerChatDataSet: ChatDataSet = {
+export const jokerChatDataSet = defineDataSet({
   id: 'joker',
   emoji: '🤡',
   name: 'Joker',
@@ -12,4 +12,4 @@ export const jokerChatDataSet: ChatDataSet = {
     //   .map(session => session.default),
     ...jokerData,
   ],
-}
+})

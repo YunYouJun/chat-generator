@@ -1,8 +1,6 @@
-import type { ChatMember, ChatMessageItem, ChatSession } from '~~/packages/chat-ui'
+import type { ChatMessageItem } from '~~/packages/chat-ui'
 
-export function defineSession(session: ChatSession) {
-  return session
-}
+export * from './define'
 
 /**
  * Parse a QA message to a list of chat messages.
