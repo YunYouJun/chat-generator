@@ -1,5 +1,5 @@
+import { downloadCSV } from '@yunlefun/feishu'
 import fs from 'fs-extra'
-import { downloadCSV } from '../packages/feishu-sheet'
 
 import { config, SHEET_MAP, type SheetKey, spreadsheetToken } from './config'
 import { getCSVFilePath } from './utils'

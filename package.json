@@ -29,6 +29,7 @@
     "@nuxt/eslint": "^0.5.6",
     "@nuxtjs/color-mode": "^3.4.4",
     "@pinia/nuxt": "^0.5.4",
+    "@yunlefun/feishu": "workspace:*",
     "@primevue/nuxt-module": "^4.0.5",
     "@primevue/themes": "^4.0.5",
     "@types/fs-extra": "^11.0.4",
