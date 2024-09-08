@@ -5,7 +5,7 @@ export interface ChatDataSet {
   /**
    * 会话合集
    */
-  sessions: ChatSession[]
+  sessions?: ChatSession[]
 }
 
 // 一次完整的会话

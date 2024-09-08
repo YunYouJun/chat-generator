@@ -1,6 +1,7 @@
 <script setup lang="ts">
+import { collectionTOC } from '~~/config'
 import Menubar from 'primevue/menubar'
-import { collections, submitSheetUrl } from '~/config'
+import { submitSheetUrl } from '~/config'
 
 const items = ref([
   {
@@ -11,13 +12,12 @@ const items = ref([
   {
     label: '十景',
     icon: 'i-ri-menu-search-line',
-    items: Object.keys(collections).map((key) => {
-      const collection = collections[key as keyof typeof collections]
+    items: collectionTOC.map((collection) => {
       return {
         label: collection.name,
         emoji: collection.emoji,
-        to: `/dataset/${key}`,
-        badge: collection.sessions.length,
+        to: `/dataset/${collection.id}`,
+        badge: collection.sessions?.length,
       }
     }),
   },

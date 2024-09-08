@@ -1,5 +1,4 @@
 import { collectionTOC } from '~~/config'
-import { DATASETS } from '~~/packages/datasets'
 import type { ChatSession } from '~~/packages/chat-ui'
 
 /**
@@ -15,7 +14,6 @@ export const collections: Record<string, {
 }> = {}
 
 collectionTOC.forEach((item) => {
-  // @ts-expect-error add sessions
   item.sessions = getDataSetById(item.id)?.sessions || []
   collections[item.id] = item as any
 })

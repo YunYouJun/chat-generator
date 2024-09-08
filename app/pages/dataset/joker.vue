@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import { DATASETS } from '~~/packages/datasets'
-
 const jokerStore = useJokerStore()
 
 useHead({

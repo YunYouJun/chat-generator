@@ -1,17 +1,20 @@
 <script setup lang="ts">
-import { jokerChatDataSet } from '~~/packages/datasets'
 import type { ChatSession } from '~~/packages/chat-ui'
 
 const session = ref<ChatSession>()
 
 let intervalId: ReturnType<typeof setInterval>
 
+const jokerChatDataSet = computed(() => getDataSetById('joker'))
+
 onMounted(() => {
   // random
   // session.value = jokerChatDataSet.sessions[Math.floor(Math.random() * jokerChatDataSet.sessions.length)]
   let index = 0
   intervalId = setInterval(() => {
-    session.value = jokerChatDataSet.sessions[index % jokerChatDataSet.sessions.length]
+    if (!jokerChatDataSet.value)
+      return
+    session.value = jokerChatDataSet.value.sessions?.[index % jokerChatDataSet.value.sessions.length]
     index += 1
   }, 200)
 })
@@ -20,7 +23,8 @@ onMounted(() => {
 
 function stopRandom() {
   clearInterval(intervalId)
-  session.value = jokerChatDataSet.sessions[Math.floor(Math.random() * jokerChatDataSet.sessions.length)]
+  if (jokerChatDataSet.value)
+    session.value = jokerChatDataSet.value.sessions?.[Math.floor(Math.random() * jokerChatDataSet.value.sessions.length)]
 }
 </script>
 
