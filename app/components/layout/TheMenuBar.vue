@@ -58,6 +58,9 @@ const items = ref([
     <template #end>
       <div class="flex items-center justify-center gap-2">
         <DarkToggle class="size-8 text-base" />
+        <a href="https://github.com/YunYouJun/chat-generator" target="_blank" class="size-8 inline-flex items-center justify-center">
+          <div i-ri-github-line />
+        </a>
       </div>
     </template>
   </Menubar>
