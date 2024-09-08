@@ -51,7 +51,7 @@ const items = ref([
         <span v-if="item.emoji">{{ item.emoji }}</span>
         <span class="ml-1">{{ item.label }}</span>
         <Badge v-if="item.badge" :class="{ 'ml-auto': !root, 'ml-2': root }" :value="item.badge" />
-        <span v-if="item.shortcut" class="border-surface bg-emphasis text-muted-color ml-auto border rounded p-1 text-xs">{{ item.shortcut }}</span>
+        <span v-if="item.shortcut" class="bg-emphasis border-surface text-muted-color ml-auto border rounded p-1 text-xs">{{ item.shortcut }}</span>
         <i v-if="hasSubmenu" class="i-ri-arrow-down-s-line" :class="[{ 'i-ri-arrow-down-s-line ml-2': root, 'i-ri-arrow-right-s-line ml-auto': !root }]" />
       </NuxtLink>
     </template>

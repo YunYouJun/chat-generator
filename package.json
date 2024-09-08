@@ -18,8 +18,11 @@
     "lint": "eslint .",
     "typecheck": "vue-tsc --noEmit"
   },
+  "dependencies": {
+    "star-markdown-css": "^0.5.1"
+  },
   "devDependencies": {
-    "@antfu/eslint-config": "^3.3.2",
+    "@antfu/eslint-config": "^3.4.1",
     "@chat-generator/datasets": "workspace:*",
     "@iconify-json/carbon": "^1.2.1",
     "@iconify-json/ri": "^1.2.0",
@@ -54,8 +57,5 @@
     "sass": "^1.78.0",
     "typescript": "^5.5.4",
     "vue-tsc": "^2.1.6"
-  },
-  "dependencies": {
-    "star-markdown-css": "^0.5.1"
   }
 }

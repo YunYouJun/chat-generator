@@ -1,0 +1,37 @@
+[
+  {
+    "id": "joker",
+    "emoji": "🤡",
+    "name": "小丑",
+    "description": "小丑聊天记录",
+    "sheet_id": "6a7dc9"
+  },
+  {
+    "id": "loveSF",
+    "emoji": "💖",
+    "name": "爱情科幻",
+    "description": "爱情科幻故事",
+    "sheet_id": "zuMbfa"
+  },
+  {
+    "id": "xiatou",
+    "emoji": "🦐",
+    "name": "下头语录",
+    "description": "下头语录",
+    "sheet_id": "yndDUM"
+  },
+  {
+    "id": "pua",
+    "emoji": "💪",
+    "name": "PUA",
+    "description": "PUA 话术",
+    "sheet_id": "Rrssvg"
+  },
+  {
+    "id": "kfc",
+    "emoji": "🍗",
+    "name": "疯狂星期四",
+    "description": "肯德基疯狂星期四文案",
+    "sheet_id": "JLTKRH"
+  }
+]

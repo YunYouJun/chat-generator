@@ -1,34 +1,21 @@
-import { jokerChatDataSet } from '~~/packages/datasets'
+import { collectionTOC } from '~~/config'
+import { DATASETS } from '~~/packages/datasets'
+import type { ChatSession } from '~~/packages/chat-ui'
 
 /**
  * 投稿表格地址
  */
 export const submitSheetUrl = 'https://yunlefun.feishu.cn/wiki/CP3LwoFW8idLg9kmTxhcPuLSnBf?sheet=6a7dc9'
 
-export const collections = {
-  joker: jokerChatDataSet,
-  loveSF: {
-    id: 'loveSF',
-    name: '科幻故事',
-    emoji: '💖',
-    sessions: [],
-  },
-  pua: {
-    id: 'pua',
-    name: 'PUA',
-    emoji: '💪',
-    sessions: [],
-  },
-  kfc: {
-    id: 'KFC',
-    name: '疯狂星期四',
-    emoji: '🍗',
-    sessions: [],
-  },
-  xiatou: {
-    id: 'xiatou',
-    name: '下头语录',
-    emoji: '🦐',
-    sessions: [],
-  },
-}
+export const collections: Record<string, {
+  id: string
+  name: string
+  emoji: string
+  sessions: ChatSession[]
+}> = {}
+
+collectionTOC.forEach((item) => {
+  // @ts-expect-error add sessions
+  item.sessions = getDataSetById(item.id)?.sessions || []
+  collections[item.id] = item as any
+})

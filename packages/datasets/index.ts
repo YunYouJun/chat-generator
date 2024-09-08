@@ -1,6 +1,5 @@
-import type { ChatDataSet, ChatMessageItem } from '@yunlefun/chat-ui'
+import type { ChatDataSet } from '@yunlefun/chat-ui'
 
-export * from './joker'
 export const DATASETS = [
   ...Object.entries(import.meta.glob<{
     default: ChatDataSet['sessions']

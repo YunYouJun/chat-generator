@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { jokerChatDataSet } from '~~/packages/datasets'
 import { collections } from '~/config'
 
 definePageMeta({

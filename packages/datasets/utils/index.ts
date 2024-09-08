@@ -11,6 +11,11 @@ export function parseQAMessage(qaMessage: string) {
   const messages = qaMessage.split('\n')
   const parsedMessages: ChatMessageItem[] = []
   messages.forEach((message) => {
+    // replace full-width colon
+    if (message.startsWith('Q：') || message.startsWith('A：') || message.startsWith('Q!：') || message.startsWith('A!：')) {
+      message = message.replace('：', ': ')
+    }
+
     const prefix = message.split(': ')[0]
     const content = message.replace(`${prefix}: `, '')
     if (!prefix)

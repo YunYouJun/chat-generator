@@ -22,7 +22,7 @@ useHead({
 })
 
 const isExchanged = ref(false)
-const sessions = computed(() => DATASETS.find(dataset => dataset.id === 'joker')?.sessions || [])
+const sessions = computed(() => getDataSetById('joker')?.sessions || [])
 
 /**
  * 立场交换
