@@ -84,9 +84,13 @@ const iAvatar = computed(() => {
           class="i-ri-error-warning-fill text-base text-#f74c30"
         />
         <div
-          class="qq-chat-bubble flex-1 rounded-lg bg-white p-2"
+          class="qq-chat-bubble flex-1 rounded-lg p-2"
           text="sm left"
           dark="bg-#262626 text-white"
+          :class="{
+            'bg-#4397f7 text-white': isUser,
+            'bg-white text-black': !isUser,
+          }"
         >
           {{ message.content }}
         </div>
