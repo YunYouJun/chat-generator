@@ -1,5 +1,5 @@
-import tocJSON from '~~/packages/datasets/toc.json'
 import type { ChatDataSet } from '~~/packages/chat-ui'
+import tocJSON from '~~/packages/datasets/toc.json'
 
 /**
  * 合集目录

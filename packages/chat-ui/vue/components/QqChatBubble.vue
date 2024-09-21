@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import { getQQAvatar } from '../../utils'
-import { A_AVATAR_SYMBOL, Q_AVATAR_SYMBOL } from '../constants'
 import type { ChatMember, ChatMessageItem } from '../../types'
+import { fetchQQAvatar } from '~/api'
+import { A_AVATAR_SYMBOL, Q_AVATAR_SYMBOL } from '../constants'
 
 const props = defineProps<{
   sender?: ChatMember
@@ -21,13 +21,7 @@ const senderAvatar = computedAsync(async () => {
     //   qq: props.sender.qq,
     // })
     // proxy qq avatar to download
-    const base64 = await $fetch('/api/qq/avatar', {
-      query: {
-        url: getQQAvatar({
-          qq: props.sender.qq,
-        }),
-      },
-    })
+    const base64 = await fetchQQAvatar(props.sender.qq)
     return typeof base64 === 'string' ? base64 : ''
   }
   else {

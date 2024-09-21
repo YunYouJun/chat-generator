@@ -1,11 +1,11 @@
+import type { SheetKey } from '../config'
 import path from 'node:path'
 import consola from 'consola'
 import { parse } from 'csv-parse/sync'
 import fs from 'fs-extra'
 import colors from 'picocolors'
-import { getCSVFilePath } from '.'
 
-import type { SheetKey } from '../config'
+import { getCSVFilePath } from '.'
 
 /**
  * Convert CSV to JSON

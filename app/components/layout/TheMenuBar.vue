@@ -3,6 +3,7 @@ import { collectionTOC } from '~~/config'
 import Menubar from 'primevue/menubar'
 import { submitSheetUrl } from '~/config'
 
+const uStore = useUserStore()
 const items = ref([
   {
     label: '聊天记录',
@@ -57,10 +58,13 @@ const items = ref([
     </template>
     <template #end>
       <div class="flex items-center justify-center gap-2">
-        <DarkToggle class="size-8 text-base" />
         <a href="https://github.com/YunYouJun/chat-generator" target="_blank" class="size-8 inline-flex items-center justify-center">
           <div i-ri-github-line />
         </a>
+        <DarkToggle class="size-8 text-base" />
+        <RouterLink class="ml-1 inline-flex" to="/user">
+          <Avatar size="normal" :image="uStore.me.avatar" shape="circle" />
+        </RouterLink>
       </div>
     </template>
   </Menubar>

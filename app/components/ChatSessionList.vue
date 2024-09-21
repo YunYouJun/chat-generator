@@ -6,8 +6,8 @@ withDefaults(defineProps<{
 }>(), {
   sessions: () => [],
 })
-const jokerStore = useJokerStore()
 
+const uStore = useUserStore()
 onMounted(() => {
   // vanilla JS
 
@@ -32,8 +32,8 @@ onMounted(() => {
       <ChatSessionUI
         :session="session"
         :show-action="true"
-        :q-avatar="jokerStore.tower.avatar"
-        :a-avatar="jokerStore.joker.avatar"
+        :q-avatar="uStore.she.avatar"
+        :a-avatar="uStore.me.avatar"
       />
     </div>
   </div>

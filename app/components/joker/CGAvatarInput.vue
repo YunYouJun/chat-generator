@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { getQQAvatar } from '~~/packages/chat-ui/utils'
+import { fetchQQAvatar } from '~/api'
 
 const props = defineProps<{
   qq?: number
@@ -20,13 +20,7 @@ const qqAvatar = ref<string>('')
  * @param qq
  */
 async function queryQQAvatar(qq: number) {
-  const base64 = await $fetch('/api/qq/avatar', {
-    query: {
-      url: getQQAvatar({
-        qq,
-      }),
-    },
-  })
+  const base64 = await fetchQQAvatar(qq)
   qqAvatar.value = typeof base64 === 'string' ? base64 : ''
 
   emit('update:avatar', qqAvatar.value)
@@ -65,6 +59,7 @@ function uploadAvatar() {
       })
       customAvatar.value = base64
       emit('update:avatar', customAvatar.value)
+      emit('update:qq', 0)
     }
   })
 }

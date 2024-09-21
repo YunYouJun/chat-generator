@@ -1,5 +1,5 @@
-import { collectionTOC } from '~~/config'
 import type { ChatSession } from '~~/packages/chat-ui'
+import { collectionTOC } from '~~/config'
 
 /**
  * 投稿表格地址

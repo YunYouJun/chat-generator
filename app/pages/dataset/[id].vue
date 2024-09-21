@@ -4,13 +4,20 @@ const id = route.params.id
 
 const dataset = computed(() => getDataSetById(id) ?? {
   id: 0,
-  title: '未知数据集',
+  emoji: '❓',
+  name: '未知数据集',
   sessions: [],
 })
 </script>
 
 <template>
-  <ChatSessionList
-    :sessions="dataset?.sessions"
-  />
+  <div>
+    <h2 class="my-2 text-2xl font-medium">
+      {{ dataset.emoji }} {{ dataset.name }}
+    </h2>
+
+    <ChatSessionList
+      :sessions="dataset?.sessions"
+    />
+  </div>
 </template>

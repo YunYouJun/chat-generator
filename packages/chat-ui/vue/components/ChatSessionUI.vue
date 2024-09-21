@@ -1,12 +1,12 @@
 <script setup lang="ts">
+import type { Options } from 'html-to-image/lib/types'
+import type { ChatMember, ChatMessageItem, ChatSession } from '../../types'
 import { convertMessagesToQAText, parseQAMessage } from '~~/packages/datasets/utils'
+
 import { copyImageToClipboard } from 'copy-image-clipboard'
 import { toPng } from 'html-to-image'
-
 import { useToast } from 'primevue/usetoast'
-import type { Options } from 'html-to-image/lib/types'
 import { A_AVATAR_SYMBOL, Q_AVATAR_SYMBOL } from '../constants'
-import type { ChatMember, ChatMessageItem, ChatSession } from '../../types'
 
 const props = defineProps<{
   session: ChatSession
