@@ -63,7 +63,13 @@ const items = ref([
         </a>
         <DarkToggle class="size-8 text-base" />
         <RouterLink class="ml-1 inline-flex" to="/user">
-          <Avatar size="normal" :image="uStore.me.avatar" shape="circle" />
+          <Avatar
+            v-if="uStore.me.avatar"
+            size="normal" :image="uStore.me.avatar" shape="circle"
+          />
+          <DefaultColorAvatar v-else class="size-8">
+            U
+          </DefaultColorAvatar>
         </RouterLink>
       </div>
     </template>
