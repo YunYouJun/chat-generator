@@ -47,7 +47,13 @@ const iAvatar = computed(() => {
       'justify-start flex-row-reverse': isUser,
     }"
   >
-    <div class="size-9 rounded-full bg-blue">
+    <div
+      class="size-9 rounded-full"
+      :class="{
+        'bg-blue': isUser,
+        'bg-pink': !isUser,
+      }"
+    >
       <Transition mode="out-in">
         <img
           v-if="iAvatar"
