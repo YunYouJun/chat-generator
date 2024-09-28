@@ -33,5 +33,12 @@
     "name": "疯狂星期四",
     "description": "肯德基疯狂星期四文案",
     "sheet_id": "JLTKRH"
+  },
+  {
+    "id": "loveWords",
+    "emoji": "🫧",
+    "name": "土味情话",
+    "description": "土味情话",
+    "sheet_id": "P7tRvp"
   }
 ]

@@ -15,14 +15,16 @@ export async function downloadAllCSV() {
   for (const collection of collectionTOC) {
     const csvFilePath = getCSVFilePath(collection.id)
     const sub_id = collection.sheet_id
-    if (!sub_id) {
-      throw new Error(`Invalid sub_id: ${sub_id}`)
+    if (sub_id) {
+      await downloadCSV({
+        token: spreadsheetToken,
+        sub_id,
+        csvFilePath,
+      })
     }
-    await downloadCSV({
-      token: spreadsheetToken,
-      sub_id,
-      csvFilePath,
-    })
+    else {
+      consola.warn(`Skip downloading ${collection.name} ...`)
+    }
   }
 }
 

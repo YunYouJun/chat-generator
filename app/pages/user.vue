@@ -48,23 +48,28 @@ const session = computed<ChatSession>(() => {
       <CGAvatarInput v-model:qq="uStore.me.qq" v-model:avatar="uStore.me.avatar" nickname="我" />
     </div>
 
-    <div class="m-auto max-w-md flex flex-col gap-2">
+    <div class="m-auto flex flex-col gap-2 md:(grid grid-cols-2 max-w-3xl)">
       <!-- textarea -->
-      <textarea
-        v-model="uStore.sessionText"
-        class="h-32 w-full border border-gray-300 rounded-md p-2 text-sm outline-blueGray"
-        placeholder="输入对话内容"
-      />
-      <CGButton @click="uStore.sessionText = rawSessionText">
-        重置文本
-      </CGButton>
+      <div class="flex flex-col gap-1">
+        <textarea
+          v-model="uStore.sessionText"
+          class="min-h-150px w-full flex-1 border border-gray-300 p-2 text-sm outline-blueGray-600 dark:border-dark-100"
+          placeholder="输入对话内容"
+        />
+        <CGButton class="h-35.2px" @click="uStore.sessionText = rawSessionText">
+          重置文本
+        </CGButton>
+      </div>
 
-      <ChatSessionUI
-        :session="session"
-        :show-action="true"
-        :q-avatar="uStore.she.avatar"
-        :a-avatar="uStore.me.avatar"
-      />
+      <div>
+        <ChatSessionUI
+          :session="session"
+          :show-action="true"
+          :q-avatar="uStore.she.avatar"
+          :a-avatar="uStore.me.avatar"
+          :actions="['copyImage', 'copyText', 'download']"
+        />
+      </div>
     </div>
   </div>
 </template>

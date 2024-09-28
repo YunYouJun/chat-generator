@@ -12,6 +12,10 @@ import { getCSVFilePath } from '.'
  * @param csvFilePath
  */
 export async function convertCSVToJSON(csvFilePath: string) {
+  if (!csvFilePath.endsWith('.csv')) {
+    consola.error(`Invalid CSV file: ${colors.dim(csvFilePath)}`)
+    return
+  }
   const csvFileContent = await fs.readFile(csvFilePath, 'utf-8')
   const recordContent = csvFileContent.trim()
   let records = parse(recordContent, {

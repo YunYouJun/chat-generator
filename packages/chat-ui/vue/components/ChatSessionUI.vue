@@ -8,7 +8,7 @@ import { toPng } from 'html-to-image'
 import { useToast } from 'primevue/usetoast'
 import { A_AVATAR_SYMBOL, Q_AVATAR_SYMBOL } from '../constants'
 
-const props = defineProps<{
+const props = withDefaults(defineProps<{
   session: ChatSession
   /**
    * show action buttons
@@ -25,7 +25,10 @@ const props = defineProps<{
    * self avatar
    */
   aAvatar?: string
-}>()
+  actions?: string[]
+}>(), {
+  actions: () => ['copyImage', 'copyText', 'download', 'custom'],
+})
 
 // provide for bubble
 provide(Q_AVATAR_SYMBOL, computed(() => props.qAvatar || ''))
@@ -146,16 +149,16 @@ function custom() {
   </div>
 
   <div v-if="showAction" class="mt-1 w-full flex gap-1 rounded">
-    <CGButton @click="copyImage">
+    <CGButton v-if="actions.includes('copyImage')" class="flex-1" @click="copyImage">
       <div i-ri:image-line />
     </CGButton>
-    <CGButton @click="copyText">
+    <CGButton v-if="actions.includes('copyText')" class="flex-1" @click="copyText">
       <div i-ri:file-copy-2-line />
     </CGButton>
-    <CGButton @click="download">
+    <CGButton v-if="actions.includes('download')" class="flex-1" @click="download">
       <div i-ri:download-2-line />
     </CGButton>
-    <CGButton @click="custom">
+    <CGButton v-if="actions.includes('custom')" class="flex-1" @click="custom">
       <div i-ri:settings-line />
     </CGButton>
   </div>
