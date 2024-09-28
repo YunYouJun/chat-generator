@@ -12,6 +12,13 @@ export interface UserInfo {
   avatar?: string
 }
 
+export const rawSessionTextArr = [
+  'A: Hello?',
+  'Q: World!',
+  'A!: Hello?',
+]
+export const rawSessionText = rawSessionTextArr.join('\n')
+
 export const useUserStore = defineStore('user', () => {
   const route = useRoute()
   const meQQ = Number.parseInt(route.query.meQQ as string | '910426929')
@@ -29,6 +36,8 @@ export const useUserStore = defineStore('user', () => {
   const she = useStorage<UserInfo>('cg:user:she', {
     qq: 0,
   })
+
+  const sessionText = useStorage('cg:user:sessionText', rawSessionText)
 
   // init
   if (meQQ)
@@ -72,6 +81,7 @@ export const useUserStore = defineStore('user', () => {
   return {
     me,
     she,
+    sessionText,
 
     exchange,
     isExchanged,

@@ -119,6 +119,16 @@ function download() {
       })
     })
 }
+
+const router = useRouter()
+const uStore = useUserStore()
+function custom() {
+  const qaText = convertMessagesToQAText(parsedQAMessages.value)
+  uStore.sessionText = qaText
+  router.push({
+    path: '/user',
+  })
+}
 </script>
 
 <template>
@@ -144,6 +154,9 @@ function download() {
     </CGButton>
     <CGButton @click="download">
       <div i-ri:download-2-line />
+    </CGButton>
+    <CGButton @click="custom">
+      <div i-ri:settings-line />
     </CGButton>
   </div>
 </template>

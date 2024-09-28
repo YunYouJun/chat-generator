@@ -1,28 +1,14 @@
 <script setup lang="ts">
 import type { ChatSession } from '~~/packages/chat-ui'
+import { parseQAMessage } from '../../packages/datasets/utils'
 
 const uStore = useUserStore()
 
-const session = ref<ChatSession>({
-  title: '小丑',
-  messages: [
-    {
-      content: 'Hello?',
-      sender: {
-        type: 'user',
-      },
-    },
-    {
-      content: 'World!',
-    },
-    {
-      content: 'Hello?',
-      sender: {
-        type: 'user',
-      },
-      banned: true,
-    },
-  ],
+const session = computed<ChatSession>(() => {
+  return {
+    title: 'QA Parse',
+    messages: parseQAMessage(uStore.sessionText),
+  }
 })
 </script>
 
@@ -62,7 +48,17 @@ const session = ref<ChatSession>({
       <CGAvatarInput v-model:qq="uStore.me.qq" v-model:avatar="uStore.me.avatar" nickname="我" />
     </div>
 
-    <div class="m-auto max-w-md">
+    <div class="m-auto max-w-md flex flex-col gap-2">
+      <!-- textarea -->
+      <textarea
+        v-model="uStore.sessionText"
+        class="h-32 w-full border border-gray-300 rounded-md p-2 text-sm outline-blueGray"
+        placeholder="输入对话内容"
+      />
+      <CGButton @click="uStore.sessionText = rawSessionText">
+        重置文本
+      </CGButton>
+
       <ChatSessionUI
         :session="session"
         :show-action="true"

@@ -92,7 +92,12 @@ const iAvatar = computed(() => {
             'bg-white text-black': !isUser,
           }"
         >
-          {{ message.content }}
+          <span v-if="message.content">
+            {{ message.content }}
+          </span>
+          <span v-else>
+            &nbsp;
+          </span>
         </div>
       </div>
     </div>
