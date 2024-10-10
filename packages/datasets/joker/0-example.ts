@@ -12,7 +12,6 @@ export default defineSession({
     {
       id: 'tower',
       nickname: '塔',
-      type: 'system',
     },
   ],
   messages: [

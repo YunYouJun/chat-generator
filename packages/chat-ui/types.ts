@@ -37,8 +37,11 @@ export interface ChatMember {
   /**
    * 发送者类型
    * @default 'user'
+   * - user: 用户自己
+   * - friend: 好友
+   * - system: 系统
    */
-  type?: 'user' | 'system'
+  type?: 'user' | 'friend' | 'system'
 }
 
 /**

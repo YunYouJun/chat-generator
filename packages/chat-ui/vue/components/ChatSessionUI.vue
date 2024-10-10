@@ -140,12 +140,19 @@ function custom() {
     class="chat-session-ui w-full flex flex-col gap-4 bg-#f2f2f2 p-6"
     dark="bg-#111"
   >
-    <QqChatBubble
-      v-for="(message, i) in parsedQAMessages"
-      :key="i"
-      :sender="getSender(message)"
-      :message="message"
-    />
+    <template v-for="(message, i) in parsedQAMessages" :key="i">
+      <div
+        v-if="typeof message.sender !== 'string' && message.sender?.type === 'system'"
+        class="text-xs text-#777"
+      >
+        {{ message.content }}
+      </div>
+      <QqChatBubble
+        v-else
+        :sender="getSender(message)"
+        :message="message"
+      />
+    </template>
   </div>
 
   <div v-if="showAction" class="mt-1 w-full flex gap-1 rounded">

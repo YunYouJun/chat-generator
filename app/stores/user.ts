@@ -1,4 +1,5 @@
 import { useStorage } from '@vueuse/core'
+import consola from 'consola'
 import { acceptHMRUpdate, defineStore } from 'pinia'
 
 export interface UserInfo {
@@ -24,6 +25,9 @@ export const useUserStore = defineStore('user', () => {
   const meQQ = Number.parseInt(route.query.meQQ as string | '910426929')
   const sheQQ = Number.parseInt(route.query.sheQQ as string)
 
+  // 历史设置过的 QQ
+  const previousUsers = useStorage<UserInfo[]>('previous-qq', [])
+
   /**
    * 我
    */
@@ -44,6 +48,23 @@ export const useUserStore = defineStore('user', () => {
     me.value.qq = meQQ
   if (sheQQ)
     she.value.qq = sheQQ
+
+  function addUser(user: UserInfo) {
+    const pUser = previousUsers.value.find(u => u.qq === user.qq)
+    if (pUser) {
+      pUser.avatar = user.avatar
+    }
+    else {
+      previousUsers.value.push(user)
+    }
+  }
+
+  function removeUser(user: UserInfo) {
+    consola.info('removeUser', user)
+    consola.info(previousUsers.value.filter(u => u.qq !== user.qq))
+    previousUsers.value = previousUsers.value.filter(u => u.qq !== user.qq)
+    console.log(previousUsers.value)
+  }
 
   const isExchanged = ref(false)
   /**
@@ -82,6 +103,9 @@ export const useUserStore = defineStore('user', () => {
     me,
     she,
     sessionText,
+    previousUsers,
+    addUser,
+    removeUser,
 
     exchange,
     isExchanged,
@@ -92,25 +116,3 @@ export const useUserStore = defineStore('user', () => {
 
 if (import.meta.hot)
   import.meta.hot.accept(acceptHMRUpdate(useUserStore, import.meta.hot))
-
-// /**
-//  * Current named of the user.
-//  */
-// const savedName = ref('')
-// const previousNames = ref(new Set<string>())
-
-// const usedNames = computed(() => Array.from(previousNames.value))
-// const otherNames = computed(() => usedNames.value.filter(name => name !== savedName.value))
-
-// /**
-//  * Changes the current name of the user and saves the one that was used
-//  * before.
-//  *
-//  * @param name - new name to set
-//  */
-// function setNewName(name: string) {
-//   if (savedName.value)
-//     previousNames.value.add(savedName.value)
-
-//   savedName.value = name
-// }

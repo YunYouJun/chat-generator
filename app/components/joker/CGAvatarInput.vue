@@ -1,17 +1,14 @@
 <script setup lang="ts">
 import { fetchQQAvatar } from '~/api'
 
-const props = defineProps<{
-  qq?: number
-  avatar?: string
+defineProps<{
   nickname?: string
 }>()
 
-const emit = defineEmits<{
-  'update:qq': [qq: number]
-  'update:avatar': [avatar: string]
-}>()
+const qq = defineModel('qq', { type: Number })
+const avatar = defineModel('avatar', { type: String })
 
+const uStore = useUserStore()
 const customAvatar = ref<string>('')
 const qqAvatar = ref<string>('')
 
@@ -19,24 +16,31 @@ const qqAvatar = ref<string>('')
  * Query QQ avatar
  * @param qq
  */
-async function queryQQAvatar(qq: number) {
-  const base64 = await fetchQQAvatar(qq)
+async function queryQQAvatar(qq: number | {
+  name: string
+  qq: number
+}) {
+  let curQQ = qq
+  if (typeof qq === 'object') {
+    curQQ = qq.qq
+  }
+  else {
+    curQQ = qq
+  }
+  const base64 = await fetchQQAvatar(curQQ)
   qqAvatar.value = typeof base64 === 'string' ? base64 : ''
 
-  emit('update:avatar', qqAvatar.value)
+  avatar.value = qqAvatar.value
+
+  uStore.addUser({
+    qq: curQQ,
+    avatar: qqAvatar.value,
+  })
 }
 
 const iAvatar = computed(() => {
-  return props.avatar || customAvatar.value || qqAvatar.value
+  return avatar.value || customAvatar.value || qqAvatar.value
 })
-
-/**
- * Update QQ
- * @param event
- */
-function updateQQ(event: Event) {
-  emit('update:qq', Number((event.target as HTMLInputElement).value))
-}
 
 const uploadAvatarInput = ref<HTMLInputElement | null>(null)
 /**
@@ -58,15 +62,16 @@ function uploadAvatar() {
         reader.readAsDataURL(file)
       })
       customAvatar.value = base64
-      emit('update:avatar', customAvatar.value)
-      emit('update:qq', 0)
+
+      avatar.value = customAvatar.value
+      qq.value = 0
     }
   })
 }
 
 onMounted(() => {
-  if (props.qq) {
-    queryQQAvatar(props.qq)
+  if (qq.value) {
+    queryQQAvatar(qq.value)
   }
 })
 </script>
@@ -100,14 +105,46 @@ onMounted(() => {
 
     <div class="flex flex-col gap-2">
       <div class="relative flex items-center justify-center gap-2">
-        <input
+        <!-- <input
           class="w-31 border rounded bg-transparent p-2 text-sm text-black/60 shadow focus:border-dark outline-none!"
           dark="text-white border-white/60 focus:border-white"
           type="number"
           :value="qq" placeholder="输入QQ号查询"
           @input="updateQQ"
           @keyup.enter="queryQQAvatar(qq || 0)"
+        > -->
+        <Select
+          :model-value="qq"
+          editable
+          type="number"
+          :options="uStore.previousUsers"
+          option-label="qq"
+          option-value="qq"
+          placeholder="输入/选择 QQ 号查询"
+          class="w-full text-xs"
+          @update:model-value="(val) => {
+            qq = Number(val)
+          }"
+          @blur="queryQQAvatar(qq || 0)"
+          @keyup.enter="queryQQAvatar(qq || 0)"
         >
+          <template #option="slotProps">
+            <div class="flex items-center gap-2">
+              <img
+                class="size-6 rounded-full"
+                :alt="slotProps.option.qq"
+                :src="slotProps.option.avatar"
+              >
+              <div>{{ slotProps.option.qq }}</div>
+
+              <div
+                class="absolute right-2 op-80 hover:op-100"
+                i-ri-close-circle-line
+                @click.prevent.stop="uStore.removeUser(slotProps.option)"
+              />
+            </div>
+          </template>
+        </Select>
       </div>
 
       <button
