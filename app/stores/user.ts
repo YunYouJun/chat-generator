@@ -63,7 +63,6 @@ export const useUserStore = defineStore('user', () => {
     consola.info('removeUser', user)
     consola.info(previousUsers.value.filter(u => u.qq !== user.qq))
     previousUsers.value = previousUsers.value.filter(u => u.qq !== user.qq)
-    console.log(previousUsers.value)
   }
 
   const isExchanged = ref(false)
