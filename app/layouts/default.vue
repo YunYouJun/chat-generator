@@ -1,5 +1,5 @@
 <template>
-  <main class="pt-4 text-center">
+  <main class="text-center md:pt-4">
     <slot />
 
     <TheFooter />

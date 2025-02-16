@@ -17,11 +17,13 @@ useHead({
     <TheMenuBar class="shadow-sm" />
   </div>
   <VitePwaManifest />
-  <div flex="~ col">
-    <div class="h-18" />
-    <NuxtLayout>
-      <NuxtPage />
-    </NuxtLayout>
+  <div class="h-screen" flex="~ col">
+    <div class="h-19 w-full" />
+    <div style="height: calc(100% - 76px)" overflow-auto>
+      <NuxtLayout>
+        <NuxtPage />
+      </NuxtLayout>
+    </div>
   </div>
   <Toast />
 </template>
