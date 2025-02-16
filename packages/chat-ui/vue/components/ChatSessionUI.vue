@@ -1,11 +1,11 @@
 <script setup lang="ts">
 import type { Options } from 'html-to-image/lib/types'
 import type { ChatMember, ChatMessageItem, ChatSession } from '../../types'
-import { convertMessagesToQAText, parseQAMessage } from '~~/packages/datasets/utils'
-
 import { copyImageToClipboard } from 'copy-image-clipboard'
+
 import { toPng } from 'html-to-image'
 import { useToast } from 'primevue/usetoast'
+import { convertMessagesToQAText, parseQAMessage } from '~~/packages/datasets/utils'
 import { A_AVATAR_SYMBOL, Q_AVATAR_SYMBOL } from '../constants'
 
 const props = withDefaults(defineProps<{
@@ -137,8 +137,7 @@ function custom() {
 <template>
   <div
     ref="sessionRef"
-    class="chat-session-ui w-full flex flex-col gap-4 bg-#f2f2f2 p-6"
-    dark="bg-#111"
+    class="chat-session-ui w-full flex flex-col gap-4 bg-$c-bg-chat p-6"
   >
     <template v-for="(message, i) in parsedQAMessages" :key="i">
       <div

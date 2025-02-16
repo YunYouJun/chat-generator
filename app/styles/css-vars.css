@@ -1,8 +1,12 @@
 :root {
   --cg-c-bg: #f5f5f5;
+
+  --c-bg-chat: #f2f2f2;
 }
 
 html.dark {
   --cg-c-bg: #222;
   --cg-c-text: #fff;
+
+  --c-bg-chat: #111;
 }
