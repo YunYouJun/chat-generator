@@ -14,8 +14,8 @@ const session = computed<ChatSession>(() => {
 
 <template>
   <div class="mb-8">
-    <div class="mx-auto my-8 max-w-md flex items-center justify-between gap-2 px-3">
-      <CGAvatarInput v-model:qq="uStore.she.qq" v-model:avatar="uStore.she.avatar" nickname="她/他" />
+    <div class="mx-auto my-8 max-w-xl flex items-center justify-between gap-2 px-3">
+      <CGAvatarInput v-model:qq="uStore.she.qq" v-model:avatar="uStore.she.avatar" class="w-36 lg:w-full" nickname="她/他" />
       <div class="flex flex-col gap-2">
         <div class="flex flex-col gap-1">
           <button
@@ -29,7 +29,7 @@ const session = computed<ChatSession>(() => {
               }" i-ri:exchange-2-line
             />
           </button>
-          <span text-xs op-60>立场交换</span>
+          <span text-xs op-60>交换</span>
         </div>
 
         <div class="flex flex-col gap-1">
@@ -42,10 +42,10 @@ const session = computed<ChatSession>(() => {
               i-ri:file-copy-2-line
             />
           </button>
-          <span text-xs op-60>复制链接</span>
+          <span text-xs op-60>复制</span>
         </div>
       </div>
-      <CGAvatarInput v-model:qq="uStore.me.qq" v-model:avatar="uStore.me.avatar" nickname="我" />
+      <CGAvatarInput v-model:qq="uStore.me.qq" v-model:avatar="uStore.me.avatar" class="w-36 lg:w-full" nickname="我" />
     </div>
 
     <div class="m-auto flex flex-col gap-2 md:(grid grid-cols-2 max-w-3xl)">

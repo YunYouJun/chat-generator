@@ -135,7 +135,7 @@ onMounted(() => {
                 :alt="slotProps.option.qq"
                 :src="slotProps.option.avatar"
               >
-              <div class="text-sm">
+              <div class="text-xs">
                 {{ slotProps.option.qq }}
               </div>
 

@@ -1,4 +1,6 @@
 /* override primevue */
 :root {
   --p-toast-width: 300px !important;
+
+  --p-list-option-padding: 0.5rem 0.5rem;
 }
