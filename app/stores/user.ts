@@ -17,7 +17,7 @@ export interface UserInfo {
 export const rawSessionTextArr = [
   'A: Hello?',
   'Q: World!',
-  'T: 2024.8.30 14:16',
+  'T: 2025.2.14 5:20',
   'A!: Hello?',
 ]
 export const rawSessionText = rawSessionTextArr.join('\n')
@@ -25,7 +25,7 @@ export const rawSessionText = rawSessionTextArr.join('\n')
 export const useUserStore = defineStore('user', () => {
   const route = useRoute()
   const meQQ = Number.parseInt(route.query.meQQ as string | '910426929')
-  const sheQQ = Number.parseInt(route.query.sheQQ as string)
+  const sheQQ = Number.parseInt(route.query.sheQQ as string | '528597474')
 
   // 历史设置过的 QQ
   const previousUsers = useStorage<UserInfo[]>('previous-qq', [])
@@ -67,18 +67,39 @@ export const useUserStore = defineStore('user', () => {
     previousUsers.value = previousUsers.value.filter(u => u.qq !== user.qq)
   }
 
-  const isExchanged = ref(false)
+  const isAvatarExchanged = ref(false)
   /**
    * 立场交换
    */
-  function exchange() {
+  function exchangeAvatar() {
     const rawShe = { ...she.value }
     she.value.qq = me.value.qq
     she.value.avatar = me.value.avatar
     me.value.qq = rawShe.qq
     me.value.avatar = rawShe.avatar
 
-    isExchanged.value = !isExchanged.value
+    isAvatarExchanged.value = !isAvatarExchanged.value
+  }
+
+  const isMessageExchanged = ref(false)
+  function exchangeMessage() {
+    /**
+     * 消息位移
+     */
+    sessionText.value = sessionText.value.split('\n').map((line) => {
+      if (line.startsWith('A')) {
+        return `Q${line.slice(1)}`
+      }
+      else if (line.startsWith('Q')) {
+        if (line.startsWith('Q!')) {
+          return `A${line.slice(2)}`
+        }
+        return `A${line.slice(1)}`
+      }
+      return line
+    }).join('\n')
+
+    isMessageExchanged.value = !isMessageExchanged.value
   }
 
   const { copy } = useClipboard()
@@ -108,8 +129,11 @@ export const useUserStore = defineStore('user', () => {
     addUser,
     removeUser,
 
-    exchange,
-    isExchanged,
+    exchangeAvatar,
+    isAvatarExchanged,
+
+    exchangeMessage,
+    isMessageExchanged,
 
     copyLink,
   }
