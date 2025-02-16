@@ -16,11 +16,13 @@ useHead({
   <div class="fixed left-0 right-0 top-0 z-99">
     <TheMenuBar class="shadow-sm" />
   </div>
-  <div class="h-18" />
   <VitePwaManifest />
-  <NuxtLayout>
-    <NuxtPage />
-  </NuxtLayout>
+  <div flex="~ col">
+    <div class="h-18" />
+    <NuxtLayout>
+      <NuxtPage />
+    </NuxtLayout>
+  </div>
   <Toast />
 </template>
 

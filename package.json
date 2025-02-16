@@ -31,7 +31,6 @@
     "@nuxt/content": "^3.1.1",
     "@nuxt/devtools": "^2.1.0",
     "@nuxt/eslint": "^1.0.1",
-    "@nuxt/image": "^1.9.0",
     "@nuxtjs/color-mode": "^3.5.2",
     "@pinia/nuxt": "^0.10.1",
     "@primevue/nuxt-module": "^4.2.5",
