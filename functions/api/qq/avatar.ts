@@ -10,18 +10,20 @@ export async function onRequest({ request }: { request: Request }) {
   const { searchParams } = new URL(request.url)
   const url = searchParams.get('url')
 
-  if (!url) {
-    return {
-      code: 400,
-      message: 'url is required',
-    }
+  if (!url || !url.startsWith('http')) {
+    return new Response(JSON.stringify(
+      {
+        code: 400,
+        message: 'url is required',
+      },
+    ))
   }
 
   const cache = await caches.open('default')
 
   const cacheBase64 = await cache.match(url as string).then(res => res?.text())
   if (cacheBase64) {
-    return wrapBase64(cacheBase64)
+    return new Response(wrapBase64(cacheBase64))
   }
   else {
     const imgUrl = new URL(url as string)
@@ -32,6 +34,6 @@ export async function onRequest({ request }: { request: Request }) {
 
     // cache.set(url, base64)
     cache.put(url, new Response(base64))
-    return wrapBase64(base64)
+    return new Response(wrapBase64(base64))
   }
 }

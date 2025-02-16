@@ -6,3 +6,10 @@ dist
 .env
 .idea/
 .data
+
+# Tencent Cloud EdgeOne
+.env
+.edgeone
+.edgeone/*
+.tef_dist/*
+  
