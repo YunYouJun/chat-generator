@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { collectionTOC } from '~~/config'
 import Menubar from 'primevue/menubar'
+import { collectionTOC } from '~~/config'
 import { submitSheetUrl } from '~/config'
 
 const uStore = useUserStore()

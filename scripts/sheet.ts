@@ -1,9 +1,9 @@
 import path from 'node:path'
 import { downloadCSV } from '@yunlefun/feishu'
 
-import { tocSheetId } from '~~/config'
 import consola from 'consola'
 import fs from 'fs-extra'
+import { tocSheetId } from '~~/config'
 import { collectionTOC, config, spreadsheetToken } from './config'
 
 import { convertCSVToJSON, getCSVFilePath, sleep } from './utils'

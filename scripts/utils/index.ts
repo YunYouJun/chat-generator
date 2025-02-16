@@ -1,5 +1,6 @@
+import type { SheetKey } from '../config'
 import path from 'node:path'
-import { config, type SheetKey } from '../config'
+import { config } from '../config'
 
 export * from './convert'
 
