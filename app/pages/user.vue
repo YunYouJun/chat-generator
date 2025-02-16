@@ -20,16 +20,31 @@ const session = computed<ChatSession>(() => {
         <div class="flex flex-col gap-1">
           <button
             class="button inline-flex items-center justify-center rounded-full bg-blue-500 p-2 text-white"
-            @click="uStore.exchange"
+            @click="uStore.exchangeAvatar"
           >
             <div
               class="transform transition"
               :class="{
-                'rotate-90': uStore.isExchanged,
-              }" i-ri:exchange-2-line
+                'rotate-180': uStore.isAvatarExchanged,
+              }" i-ri:swap-2-line
             />
           </button>
           <span text-xs op-60>交换</span>
+        </div>
+
+        <div class="flex flex-col gap-1">
+          <button
+            class="button inline-flex items-center justify-center rounded-full bg-blue-500 p-2 text-white"
+            @click="uStore.exchangeMessage"
+          >
+            <div
+              class="transform transition"
+              :class="{
+                'rotate-180': uStore.isMessageExchanged,
+              }" i-ri:arrow-left-right-line
+            />
+          </button>
+          <span text-xs op-60>位移</span>
         </div>
 
         <div class="flex flex-col gap-1">
