@@ -1,6 +1,7 @@
 import { useStorage } from '@vueuse/core'
 import consola from 'consola'
 import { acceptHMRUpdate, defineStore } from 'pinia'
+import { useRoute } from 'vue-router'
 
 export interface UserInfo {
   /**
@@ -16,6 +17,7 @@ export interface UserInfo {
 export const rawSessionTextArr = [
   'A: Hello?',
   'Q: World!',
+  'T: 2024.8.30 14:16',
   'A!: Hello?',
 ]
 export const rawSessionText = rawSessionTextArr.join('\n')
