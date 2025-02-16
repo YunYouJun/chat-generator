@@ -1,12 +1,15 @@
+import { execSync } from 'node:child_process'
 import process from 'node:process'
 import lara from '@primevue/themes/lara'
 import { pwa } from './app/config/pwa'
 import { appDescription } from './app/constants/index'
 
 // commit ref
+// 获取当前 commit hash
 Object.assign(process.env, {
-  VITE_COMMIT_REF: process.env.CF_PAGES_COMMIT_SHA || '',
+  VITE_COMMIT_REF: process.env.CF_PAGES_COMMIT_SHA || execSync('git rev-parse HEAD').toString().trim(),
 })
+
 // add build time to env
 import.meta.env.VITE_APP_BUILD_TIME = new Date().getTime().toString()
 
