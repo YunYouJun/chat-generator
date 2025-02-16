@@ -88,6 +88,9 @@ export const useUserStore = defineStore('user', () => {
      */
     sessionText.value = sessionText.value.split('\n').map((line) => {
       if (line.startsWith('A')) {
+        if (line.startsWith('A!')) {
+          return `Q${line.slice(2)}`
+        }
         return `Q${line.slice(1)}`
       }
       else if (line.startsWith('Q')) {
