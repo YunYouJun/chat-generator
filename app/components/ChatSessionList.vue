@@ -2,7 +2,7 @@
 import type { ChatDataSet } from '~~/packages/chat-ui'
 
 withDefaults(defineProps<{
-  sessions: ChatDataSet['sessions']
+  sessions?: ChatDataSet['sessions']
 }>(), {
   sessions: () => [],
 })

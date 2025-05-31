@@ -1,5 +1,7 @@
 # chat-generator
 
+[关于](https://chat.yunyoujun.cn/about)
+
 ## Collections
 
 - [Joker](https://chat.yunyoujun.cn/dataset/joker): 结局选择器
@@ -7,7 +9,6 @@
 
 ## TODO
 
+- [未来计划](https://chat.yunyoujun.cn/about#%E6%9C%AA%E6%9D%A5%E8%AE%A1%E5%88%92)
 - Joker
-  - [x] 感叹号
-  - [x] 交换左右
-  - [ ] Gif 生成器
+  - Gif 生成器

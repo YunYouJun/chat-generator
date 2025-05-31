@@ -19,6 +19,6 @@
     "sheet": "tsx index.ts"
   },
   "devDependencies": {
-    "@larksuiteoapi/node-sdk": "^1.42.0"
+    "@larksuiteoapi/node-sdk": "^1.47.1"
   }
 }
