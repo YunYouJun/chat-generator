@@ -131,18 +131,5 @@ export default defineNuxtConfig({
     compatibilityVersion: 4,
   },
 
-  compatibilityDate: '2024-08-14',
-
-  vite: {
-    css: {
-      preprocessorOptions: {
-        /**
-         * @see https://vitejs.dev/config/shared-options.html#css-preprocessoroptions
-         */
-        scss: {
-          api: 'modern-compiler', // or "modern", "legacy"
-        },
-      },
-    },
-  },
+  compatibilityDate: 'latest',
 })

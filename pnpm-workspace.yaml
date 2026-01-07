@@ -1,2 +1,13 @@
+shellEmulator: true
+
+# eslint-disable-next-line pnpm/yaml-enforce-settings
+trustPolicy: off
+
 packages:
   - 'packages/*'
+onlyBuiltDependencies:
+  - '@parcel/watcher'
+  - better-sqlite3
+  - esbuild
+  - protobufjs
+  - sharp

@@ -14,7 +14,7 @@ const router = useRouter()
       还没有找到新的聊天记录
     </div>
     <div>
-      <button text-sm btn m="3 t8" p="y-2 x-3" @click="router.push('/')">
+      <button btn text-sm m="3 t8" p="y-2 x-3" @click="router.push('/')">
         返回主页
       </button>
     </div>
