@@ -11,6 +11,8 @@ export interface TocItem {
  *
  * @param body - Reactive ref of the Nuxt Content document body
  * @param options - Observer options for scroll tracking
+ * @param options.rootMargin - IntersectionObserver rootMargin
+ * @param options.threshold - IntersectionObserver threshold
  */
 export function useContentToc(
   body: Ref<any> | ComputedRef<any>,

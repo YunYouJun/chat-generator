@@ -22,16 +22,16 @@ function handleScrollTo(id: string) {
     <!-- TOC -->
     <div v-if="tocItems.length" class="m-auto mb-3 max-w-2xl">
       <button
-        class="flex w-full items-center justify-between rounded-$ios-radius-md bg-$ios-card-bg px-4 py-3 shadow-sm ios-pressable"
+        class="w-full flex ios-pressable items-center justify-between rounded-$ios-radius-md bg-$ios-card-bg px-4 py-3 shadow-sm"
         @click="tocExpanded = !tocExpanded"
       >
         <div class="flex items-center gap-2">
-          <div class="i-ri-list-unordered text-$ios-blue text-base" />
-          <span class="text-15px font-medium text-$ios-label">目录</span>
+          <div class="i-ri-list-unordered text-base text-$ios-blue" />
+          <span class="text-15px text-$ios-label font-medium">目录</span>
           <span class="text-12px text-$ios-secondary-label">{{ tocItems.length }} 个章节</span>
         </div>
         <div
-          class="i-ri-arrow-down-s-line text-$ios-secondary-label text-lg transition-transform duration-250"
+          class="i-ri-arrow-down-s-line text-lg text-$ios-secondary-label transition-transform duration-250"
           :class="{ 'rotate-180': tocExpanded }"
         />
       </button>
@@ -41,7 +41,7 @@ function handleScrollTo(id: string) {
           <button
             v-for="(item, index) in tocItems"
             :key="item.id"
-            class="group flex w-full items-center text-left ios-pressable"
+            class="group w-full flex ios-pressable items-center text-left"
             :class="[item.depth === 3 ? 'pl-10' : 'pl-4']"
             @click="handleScrollTo(item.id)"
           >
