@@ -5,7 +5,13 @@ import { getQQAvatar } from '~~/packages/chat-ui'
  */
 export async function fetchQQAvatar(qq: number) {
   const url = getQQAvatar({ qq })
-  return $fetch('/api/qq/avatar', {
-    query: { url },
-  })
+  try {
+    return await $fetch('/api/qq/avatar', {
+      query: { url },
+    })
+  }
+  catch (err) {
+    console.error('[fetchQQAvatar] failed for QQ:', qq, err)
+    return ''
+  }
 }

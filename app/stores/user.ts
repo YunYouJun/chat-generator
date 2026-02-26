@@ -1,5 +1,4 @@
 import { useStorage } from '@vueuse/core'
-import consola from 'consola'
 import { acceptHMRUpdate, defineStore } from 'pinia'
 import { useRoute } from 'vue-router'
 
@@ -24,8 +23,8 @@ export const rawSessionText = rawSessionTextArr.join('\n')
 
 export const useUserStore = defineStore('user', () => {
   const route = useRoute()
-  const meQQ = Number.parseInt(route.query.meQQ as string | '910426929')
-  const sheQQ = Number.parseInt(route.query.sheQQ as string | '528597474')
+  const meQQ = Number.parseInt((route.query.meQQ as string) ?? '')
+  const sheQQ = Number.parseInt((route.query.sheQQ as string) ?? '')
 
   // 历史设置过的 QQ
   const previousUsers = useStorage<UserInfo[]>('previous-qq', [])
@@ -62,8 +61,6 @@ export const useUserStore = defineStore('user', () => {
   }
 
   function removeUser(user: UserInfo) {
-    consola.info('removeUser', user)
-    consola.info(previousUsers.value.filter(u => u.qq !== user.qq))
     previousUsers.value = previousUsers.value.filter(u => u.qq !== user.qq)
   }
 

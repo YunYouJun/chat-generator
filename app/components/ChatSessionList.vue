@@ -8,15 +8,6 @@ withDefaults(defineProps<{
 })
 
 const uStore = useUserStore()
-onMounted(() => {
-  // vanilla JS
-
-  // const msnry = new Masonry('.masonry', {
-  // // options...
-  //   itemSelector: '.masonry-item',
-  //   columnWidth: 375,
-  // })
-})
 </script>
 
 <template>

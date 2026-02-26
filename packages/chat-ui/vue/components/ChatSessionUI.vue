@@ -66,13 +66,23 @@ function copyImage() {
   }
   toPng(el, toPngOptions)
     .then((dataUrl: string) => {
+      return copyImageToClipboard(dataUrl)
+    })
+    .then(() => {
       toast.add({
         severity: 'success',
         summary: '拷贝成功',
         detail: '已将图片拷贝到剪贴板',
         life: 3000,
       })
-      copyImageToClipboard(dataUrl)
+    })
+    .catch(() => {
+      toast.add({
+        severity: 'error',
+        summary: '拷贝失败',
+        detail: '生成或复制图片时出错',
+        life: 3000,
+      })
     })
 }
 
@@ -99,6 +109,14 @@ function copyText() {
         life: 3000,
       })
     })
+    .catch(() => {
+      toast.add({
+        severity: 'error',
+        summary: '拷贝失败',
+        detail: '复制文本时出错',
+        life: 3000,
+      })
+    })
 }
 
 function download() {
@@ -118,6 +136,14 @@ function download() {
         severity: 'success',
         summary: '下载成功',
         detail: '已下载图片',
+        life: 3000,
+      })
+    })
+    .catch(() => {
+      toast.add({
+        severity: 'error',
+        summary: '下载失败',
+        detail: '生成图片时出错',
         life: 3000,
       })
     })

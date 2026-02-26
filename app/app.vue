@@ -51,15 +51,15 @@ const currentTab = computed(() => {
       <!-- iOS Tab Bar -->
       <div class="ios-glass fixed bottom-0 left-0 right-0 z-99 border-t-0.5 border-$ios-separator" style="padding-bottom: var(--sab)">
         <div class="h-50px flex items-end justify-around px-4">
-          <RouterLink to="/" class="flex flex-1 flex-col items-center justify-center gap-0.5 pb-1 pt-1.5" :class="currentTab === 'home' ? 'text-$ios-blue' : 'text-$ios-secondary-label'">
+          <RouterLink to="/" aria-label="聊天" class="flex flex-1 flex-col items-center justify-center gap-0.5 pb-1 pt-1.5" :class="currentTab === 'home' ? 'text-$ios-blue' : 'text-$ios-secondary-label'">
             <div class="text-xl" :class="currentTab === 'home' ? 'i-ri-chat-1-fill' : 'i-ri-chat-1-line'" />
             <span class="text-10px">聊天</span>
           </RouterLink>
-          <RouterLink to="/user" class="flex flex-1 flex-col items-center justify-center gap-0.5 pb-1 pt-1.5" :class="currentTab === 'user' ? 'text-$ios-blue' : 'text-$ios-secondary-label'">
+          <RouterLink to="/user" aria-label="编辑" class="flex flex-1 flex-col items-center justify-center gap-0.5 pb-1 pt-1.5" :class="currentTab === 'user' ? 'text-$ios-blue' : 'text-$ios-secondary-label'">
             <div class="text-xl" :class="currentTab === 'user' ? 'i-ri-edit-fill' : 'i-ri-edit-line'" />
             <span class="text-10px">编辑</span>
           </RouterLink>
-          <RouterLink to="/settings" class="flex flex-1 flex-col items-center justify-center gap-0.5 pb-1 pt-1.5" :class="currentTab === 'settings' ? 'text-$ios-blue' : 'text-$ios-secondary-label'">
+          <RouterLink to="/settings" aria-label="设置" class="flex flex-1 flex-col items-center justify-center gap-0.5 pb-1 pt-1.5" :class="currentTab === 'settings' ? 'text-$ios-blue' : 'text-$ios-secondary-label'">
             <div class="text-xl" :class="currentTab === 'settings' ? 'i-ri-settings-3-fill' : 'i-ri-settings-3-line'" />
             <span class="text-10px">设置</span>
           </RouterLink>

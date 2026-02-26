@@ -13,6 +13,10 @@ export function parseQAMessage(qaMessage: string) {
   const messages = qaMessage.split('\n')
   const parsedMessages: ChatMessageItem[] = []
   messages.forEach((message) => {
+    // Skip empty lines
+    if (!message.trim())
+      return
+
     // 从 Q(): 解析出 sender 昵称
     // 从 A(): 解析出 sender 昵称
 
@@ -31,7 +35,6 @@ export function parseQAMessage(qaMessage: string) {
           // 时间戳
         case 'T':
           sender.type = 'system'
-          parsedMsg.content = message.slice('T: '.length)
           break
       }
       message = message.slice(1)
@@ -59,11 +62,16 @@ export function parseQAMessage(qaMessage: string) {
  */
 export function convertMessagesToQAText(messages: ChatMessageItem[]) {
   return messages.map((message) => {
-    if (typeof message.sender === 'object' && message.sender.type === 'user') {
-      return `A${
-        message.banned ? '!' : ''
-      }: ${message.content}`
+    const sender = typeof message.sender === 'object' ? message.sender : undefined
+    const nickname = sender?.nickname ? `(${sender.nickname})` : ''
+    const banned = message.banned ? '!' : ''
+
+    if (sender?.type === 'system') {
+      return `T: ${message.content}`
     }
-    return `Q: ${message.content}`
+    if (sender?.type === 'user') {
+      return `A${nickname}${banned}: ${message.content}`
+    }
+    return `Q${nickname}${banned}: ${message.content}`
   }).join('\n')
 }

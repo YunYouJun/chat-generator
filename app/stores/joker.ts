@@ -4,8 +4,8 @@ import { acceptHMRUpdate, defineStore } from 'pinia'
 
 export const useJokerStore = defineStore('joker', () => {
   const route = useRoute()
-  const jokerQQ = Number.parseInt(route.query.jokerQQ as string | '910426929')
-  const towerQQ = Number.parseInt(route.query.towerQQ as string)
+  const jokerQQ = Number.parseInt((route.query.jokerQQ as string) ?? '')
+  const towerQQ = Number.parseInt((route.query.towerQQ as string) ?? '')
 
   const joker = useStorage<ChatMember>('cg:joker:joker', {
     qq: jokerQQ,

@@ -14,10 +14,12 @@ onMounted(() => {
       return
     session.value = jokerChatDataSet.value.sessions?.[index % jokerChatDataSet.value.sessions.length]
     index += 1
-  }, 200)
+  }, 500)
 })
 
-// TODO: gif.js not work
+onBeforeUnmount(() => {
+  clearInterval(intervalId)
+})
 
 function stopRandom() {
   clearInterval(intervalId)

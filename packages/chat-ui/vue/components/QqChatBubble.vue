@@ -17,17 +17,18 @@ const senderAvatar = computedAsync(async () => {
     return props.sender.avatar
   }
   else if (props.sender?.qq) {
-    // return getQQAvatar({
-    //   qq: props.sender.qq,
-    // })
-    // proxy qq avatar to download
-    const base64 = await fetchQQAvatar(props.sender.qq)
-    return typeof base64 === 'string' ? base64 : ''
+    try {
+      const base64 = await fetchQQAvatar(props.sender.qq)
+      return typeof base64 === 'string' ? base64 : ''
+    }
+    catch {
+      return ''
+    }
   }
   else {
     return ''
   }
-})
+}, '')
 
 const aAvatar = inject(A_AVATAR_SYMBOL)
 const qAvatar = inject(Q_AVATAR_SYMBOL)
@@ -58,7 +59,7 @@ const iAvatar = computed(() => {
         <img
           v-if="iAvatar"
           :src="iAvatar"
-          alt="avatar"
+          :alt="sender?.nickname || '头像'"
           class="size-9 rounded-full object-cover object-center"
         >
       </Transition>

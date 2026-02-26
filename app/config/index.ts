@@ -14,6 +14,11 @@ export const collections: Record<string, {
 }> = {}
 
 collectionTOC.forEach((item) => {
-  item.sessions = getDataSetById(item.id)?.sessions || []
-  collections[item.id] = item as any
+  const sessions = getDataSetById(item.id)?.sessions || []
+  collections[item.id] = {
+    id: item.id,
+    name: item.name || item.id,
+    emoji: item.emoji || '',
+    sessions,
+  }
 })

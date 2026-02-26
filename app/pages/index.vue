@@ -19,14 +19,16 @@ const { checkFirstVisit } = useGuide()
 
 const CHAT_BASE_WIDTH = 375
 
-const previewContainerRef = ref<HTMLElement | null>(null)
+const previewContainerRefs = useTemplateRef<HTMLElement[]>('previewContainer')
 
 function updatePreviewScales() {
-  const containers = document.querySelectorAll('.preview-container')
+  const containers = previewContainerRefs.value
+  if (!containers)
+    return
   containers.forEach((el) => {
     const containerWidth = el.clientWidth
     const scale = containerWidth / CHAT_BASE_WIDTH
-    ;(el as HTMLElement).style.setProperty('--preview-scale', String(scale))
+    el.style.setProperty('--preview-scale', String(scale))
   })
 }
 
@@ -38,8 +40,9 @@ onMounted(() => {
   resizeObserver = new ResizeObserver(() => {
     updatePreviewScales()
   })
-  const containers = document.querySelectorAll('.preview-container')
-  containers.forEach(el => resizeObserver!.observe(el))
+  const containers = previewContainerRefs.value
+  if (containers)
+    containers.forEach(el => resizeObserver!.observe(el))
 })
 
 onBeforeUnmount(() => {
@@ -59,7 +62,7 @@ onBeforeUnmount(() => {
       >
         <div class="overflow-hidden rounded-$ios-radius-lg bg-$ios-card-bg shadow-sm">
           <!-- Preview area -->
-          <div ref="previewContainerRef" class="preview-container relative h-28 overflow-hidden bg-$c-bg-chat sm:h-48">
+          <div ref="previewContainer" class="preview-container relative h-28 overflow-hidden bg-$c-bg-chat sm:h-48">
             <div v-if="dataset.sessions[0]" class="pointer-events-none absolute left-0 top-0 origin-top-left" :style="{ width: `${CHAT_BASE_WIDTH}px`, transform: `scale(var(--preview-scale, 0.48))` }">
               <ChatSessionUI :session="dataset.sessions[0]" />
             </div>

@@ -91,7 +91,7 @@ onMounted(() => {
       @click="uploadAvatar"
     >
       <img
-        v-if="iAvatar" :src="iAvatar" alt="avatar"
+        v-if="iAvatar" :src="iAvatar" :alt="nickname || '头像'"
         class="size-16 rounded-full object-cover object-center"
       >
       <div v-else class="size-16 rounded-full bg-gray-300 dark:bg-gray-600" />

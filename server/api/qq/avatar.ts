@@ -2,6 +2,16 @@ import { LRUCache } from 'lru-cache'
 
 const cache = new LRUCache<string, string>({ max: 1000 })
 
+/**
+ * Allowed hostnames for avatar proxy (prevent SSRF)
+ */
+const ALLOWED_HOSTS = [
+  'qlogo2.store.qq.com',
+  'q1.qlogo.cn',
+  'q2.qlogo.cn',
+  'thirdqq.qlogo.cn',
+]
+
 function arrayBufferToBase64(buffer: ArrayBuffer): string {
   const bytes = new Uint8Array(buffer)
   let binary = ''
@@ -21,6 +31,19 @@ export default defineEventHandler(async (event) => {
 
   if (!url || !url.startsWith('http')) {
     throw createError({ statusCode: 400, statusMessage: 'url is required' })
+  }
+
+  // Validate URL host against whitelist
+  try {
+    const parsed = new URL(url)
+    if (!ALLOWED_HOSTS.includes(parsed.hostname)) {
+      throw createError({ statusCode: 403, statusMessage: 'Host not allowed' })
+    }
+  }
+  catch (e: any) {
+    if (e.statusCode)
+      throw e
+    throw createError({ statusCode: 400, statusMessage: 'Invalid URL' })
   }
 
   if (cache.has(url)) {

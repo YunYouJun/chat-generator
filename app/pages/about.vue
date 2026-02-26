@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import 'star-markdown-css/src/scss/theme/yun.scss'
-
 const { data: home } = await useAsyncData(() => queryCollection('content').path('/about').first())
 
 useSeoMeta({

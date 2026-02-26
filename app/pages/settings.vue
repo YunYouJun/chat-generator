@@ -43,6 +43,7 @@ const buildDate = buildTime ? new Date(Number(buildTime)).toLocaleDateString('zh
           v-if="uStore.me.avatar"
           :src="uStore.me.avatar"
           class="size-20 rounded-full object-cover shadow-sm"
+          alt="我的头像"
         >
         <DefaultColorAvatar v-else class="size-20 text-2xl shadow-sm">
           U
