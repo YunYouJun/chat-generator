@@ -11,9 +11,6 @@ importers:
       konsta:
         specifier: ^5.0.7
         version: 5.0.7
-      star-markdown-css:
-        specifier: ^0.5.3
-        version: 0.5.3
     devDependencies:
       '@antfu/eslint-config':
         specifier: ^7.6.1
@@ -6847,9 +6844,6 @@ packages:
 
   standard-as-callback@2.1.0:
     resolution: {integrity: sha512-qoRRSyROncaz1z0mvYqIE4lCd9p2R90i6GxW3uZv5ucSu8tU7B5HXUP1gG8pVZsYNVaXjk8ClXHPttLyxAL48A==}
-
-  star-markdown-css@0.5.3:
-    resolution: {integrity: sha512-ewlx4ge1i6B2jopgOJbhgTbshNFI8HEH5vD2itxDh3qKYz+a9+H2EJC1pyPapDeJEOm0DRpHiAvBOSB/H1RMvA==}
 
   statuses@2.0.1:
     resolution: {integrity: sha512-RwNA9Z/7PrK06rYLIzFMlaF+l73iwpzsqRIFgbMLbTcLD6cOao82TaWefPXQvB2fOC4AjuYSEndS7N/mTCbkdQ==}
@@ -15658,8 +15652,6 @@ snapshots:
 
   standard-as-callback@2.1.0: {}
 
-  star-markdown-css@0.5.3: {}
-
   statuses@2.0.1: {}
 
   std-env@3.10.0: {}
@@ -16486,7 +16478,7 @@ snapshots:
       acorn: 8.16.0
       browserslist: 4.28.1
       chrome-trace-event: 1.0.4
-      enhanced-resolve: 5.18.1
+      enhanced-resolve: 5.19.0
       es-module-lexer: 1.7.0
       eslint-scope: 5.1.1
       events: 3.3.0
@@ -16497,7 +16489,7 @@ snapshots:
       mime-types: 2.1.35
       neo-async: 2.6.2
       schema-utils: 4.3.0
-      tapable: 2.2.1
+      tapable: 2.3.0
       terser-webpack-plugin: 5.3.11(esbuild@0.27.2)(webpack@5.98.0(esbuild@0.27.2))
       watchpack: 2.4.2
       webpack-sources: 3.3.4
