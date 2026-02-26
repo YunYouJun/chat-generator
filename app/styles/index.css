@@ -113,10 +113,14 @@
   -webkit-overflow-scrolling: touch;
 }
 
-/* iOS-style scrollbar */
-::-webkit-scrollbar {
-  width: 0;
-  height: 0;
+/* iOS-style hidden scrollbar (keep scroll functional) */
+.flex-1.overflow-auto,
+[data-scrollable] {
+  scrollbar-width: none;
+}
+.flex-1.overflow-auto::-webkit-scrollbar,
+[data-scrollable]::-webkit-scrollbar {
+  display: none;
 }
 
 /* Prevent text selection on interactive elements */

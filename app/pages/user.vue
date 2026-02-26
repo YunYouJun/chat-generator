@@ -39,7 +39,7 @@ const actions = computed(() => [
 <template>
   <div class="pb-4">
     <div class="mx-auto my-4 max-w-xl flex flex-col gap-3 px-3">
-      <div class="flex items-center justify-between gap-4">
+      <div class="flex items-center justify-between gap-2">
         <CGAvatarInput v-model:qq="uStore.she.qq" v-model:avatar="uStore.she.avatar" class="flex-1" nickname="她/他" />
         <CGAvatarInput v-model:qq="uStore.me.qq" v-model:avatar="uStore.me.avatar" class="flex-1" nickname="我" />
       </div>

@@ -31,7 +31,7 @@ const currentTab = computed(() => {
 
 <template>
   <kApp theme="ios" :dark="isDark">
-    <div class="min-h-screen bg-$ios-grouped-bg text-$ios-label font-sans">
+    <div class="h-full bg-$ios-grouped-bg text-$ios-label font-sans">
       <!-- iOS Navigation Bar -->
       <div class="ios-glass fixed left-0 right-0 top-0 z-99 border-b-0.5 border-$ios-separator" style="padding-top: var(--sat)">
         <TheMenuBar />
@@ -40,7 +40,7 @@ const currentTab = computed(() => {
       <VitePwaManifest />
 
       <!-- Main Content -->
-      <div class="h-screen flex flex-col" style="padding-top: calc(var(--sat) + 44px); padding-bottom: calc(var(--sab) + 50px)">
+      <div class="h-full flex flex-col" style="padding-top: calc(var(--sat) + 44px); padding-bottom: calc(var(--sab) + 50px)">
         <div class="flex-1 overflow-auto">
           <NuxtLayout>
             <NuxtPage />
@@ -95,9 +95,10 @@ const currentTab = computed(() => {
 html,
 body,
 #__nuxt {
-  height: 100%;
+  height: 100dvh;
   margin: 0;
   padding: 0;
+  overflow: hidden;
   font-family:
     -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro Text', 'Helvetica Neue', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;

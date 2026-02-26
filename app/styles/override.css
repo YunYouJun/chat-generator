@@ -1,5 +1,14 @@
 /* Konsta UI & iOS overrides */
 
+/* Fix: kApp adds h-full min-h-screen but no overflow control,
+   causing double scroll when page content exceeds viewport */
+.k-app {
+  height: 100dvh !important;
+  min-height: 100dvh !important;
+  max-height: 100dvh !important;
+  overflow: hidden;
+}
+
 /* iOS toast notification */
 .ios-toast {
   position: fixed;
