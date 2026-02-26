@@ -49,6 +49,7 @@ export default defineNuxtConfig({
     'konsta/vue/theme.css',
     '~/styles/css-vars.css',
     '~/styles/index.css',
+    '~/styles/markdown.css',
     '~/styles/override.css',
   ],
 

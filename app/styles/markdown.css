@@ -1,0 +1,80 @@
+.ios-markdown h1 {
+  font-size: 22px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  margin-top: 0;
+  margin-bottom: 12px;
+}
+
+.ios-markdown h2 {
+  font-size: 17px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  margin-top: 24px;
+  margin-bottom: 8px;
+  padding-bottom: 6px;
+  border-bottom: 0.5px solid var(--ios-separator);
+}
+
+.ios-markdown p {
+  font-size: 15px;
+  line-height: 1.6;
+  margin-top: 8px;
+  margin-bottom: 8px;
+  color: var(--ios-label);
+}
+
+.ios-markdown blockquote {
+  margin: 16px 0;
+  padding: 12px 16px;
+  border-left: 3px solid var(--ios-blue);
+  background: var(--ios-grouped-bg);
+  border-radius: var(--ios-radius-sm);
+  font-size: 15px;
+  line-height: 1.6;
+  color: var(--ios-secondary-label);
+}
+
+.ios-markdown blockquote p {
+  margin: 4px 0;
+  color: var(--ios-secondary-label);
+}
+
+.ios-markdown a {
+  color: var(--ios-blue);
+  text-decoration: none;
+}
+
+.ios-markdown a:active {
+  opacity: 0.7;
+}
+
+.ios-markdown ul,
+.ios-markdown ol {
+  padding-left: 20px;
+  margin: 8px 0;
+}
+
+.ios-markdown li {
+  font-size: 15px;
+  line-height: 1.6;
+  margin: 4px 0;
+}
+
+.ios-markdown img {
+  border-radius: var(--ios-radius-md);
+  margin: 16px auto;
+  max-width: 100%;
+  display: block;
+}
+
+.ios-markdown strong {
+  font-weight: 600;
+}
+
+.ios-markdown hr {
+  border: none;
+  height: 0.5px;
+  background: var(--ios-separator);
+  margin: 20px 0;
+}
