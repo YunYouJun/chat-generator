@@ -61,7 +61,7 @@ const buildDate = buildTime ? new Date(Number(buildTime)).toLocaleDateString('zh
       <div class="overflow-hidden rounded-$ios-radius-md bg-$ios-card-bg">
         <div class="flex items-center justify-between px-4 py-3">
           <div class="flex items-center gap-3">
-            <div class="flex size-7 items-center justify-center rounded-md bg-indigo-500 text-white">
+            <div class="size-7 flex items-center justify-center rounded-md bg-indigo-500 text-white">
               <div class="i-ri-contrast-2-line text-base" />
             </div>
             <span class="text-$ios-label">外观</span>
@@ -98,7 +98,7 @@ const buildDate = buildTime ? new Date(Number(buildTime)).toLocaleDateString('zh
           class="flex items-center justify-between px-4 py-3 active:bg-black/5 dark:active:bg-white/5"
         >
           <div class="flex items-center gap-3">
-            <div class="flex size-7 items-center justify-center rounded-md bg-$ios-orange text-white">
+            <div class="size-7 flex items-center justify-center rounded-md bg-$ios-orange text-white">
               <div class="i-ri-file-list-3-line text-base" />
             </div>
             <span class="text-$ios-label">提交聊天记录</span>
@@ -118,11 +118,11 @@ const buildDate = buildTime ? new Date(Number(buildTime)).toLocaleDateString('zh
       </div>
       <div class="overflow-hidden rounded-$ios-radius-md bg-$ios-card-bg">
         <button
-          class="flex w-full items-center justify-between px-4 py-3 active:bg-black/5 dark:active:bg-white/5"
+          class="w-full flex items-center justify-between px-4 py-3 active:bg-black/5 dark:active:bg-white/5"
           @click="openGuide"
         >
           <div class="flex items-center gap-3">
-            <div class="flex size-7 items-center justify-center rounded-md bg-$ios-teal text-white">
+            <div class="size-7 flex items-center justify-center rounded-md bg-$ios-teal text-white">
               <div class="i-ri-questionnaire-line text-base" />
             </div>
             <span class="text-$ios-label">使用说明</span>
@@ -143,7 +143,7 @@ const buildDate = buildTime ? new Date(Number(buildTime)).toLocaleDateString('zh
           class="flex items-center justify-between px-4 py-3 active:bg-black/5 dark:active:bg-white/5"
         >
           <div class="flex items-center gap-3">
-            <div class="flex size-7 items-center justify-center rounded-md bg-$ios-blue text-white">
+            <div class="size-7 flex items-center justify-center rounded-md bg-$ios-blue text-white">
               <div class="i-ri-information-line text-base" />
             </div>
             <span class="text-$ios-label">关于项目</span>
@@ -157,7 +157,7 @@ const buildDate = buildTime ? new Date(Number(buildTime)).toLocaleDateString('zh
           class="flex items-center justify-between px-4 py-3 active:bg-black/5 dark:active:bg-white/5"
         >
           <div class="flex items-center gap-3">
-            <div class="flex size-7 items-center justify-center rounded-md bg-gray-800 text-white dark:bg-gray-200 dark:text-gray-800">
+            <div class="size-7 flex items-center justify-center rounded-md bg-gray-800 text-white dark:bg-gray-200 dark:text-gray-800">
               <div class="i-ri-github-fill text-base" />
             </div>
             <span class="text-$ios-label">GitHub</span>
@@ -174,7 +174,7 @@ const buildDate = buildTime ? new Date(Number(buildTime)).toLocaleDateString('zh
           class="flex items-center justify-between px-4 py-3 active:bg-black/5 dark:active:bg-white/5"
         >
           <div class="flex items-center gap-3">
-            <div class="flex size-7 items-center justify-center rounded-md bg-pink-500 text-white">
+            <div class="size-7 flex items-center justify-center rounded-md bg-pink-500 text-white">
               <div class="i-ri-bilibili-line text-base" />
             </div>
             <span class="text-$ios-label">B 站</span>

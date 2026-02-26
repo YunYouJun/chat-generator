@@ -31,9 +31,9 @@ const currentTab = computed(() => {
 
 <template>
   <kApp theme="ios" :dark="isDark">
-    <div class="min-h-screen bg-$ios-grouped-bg font-sans text-$ios-label">
+    <div class="min-h-screen bg-$ios-grouped-bg text-$ios-label font-sans">
       <!-- iOS Navigation Bar -->
-      <div class="fixed left-0 right-0 top-0 z-99 ios-glass border-b-0.5 border-$ios-separator" style="padding-top: var(--sat)">
+      <div class="ios-glass fixed left-0 right-0 top-0 z-99 border-b-0.5 border-$ios-separator" style="padding-top: var(--sat)">
         <TheMenuBar />
       </div>
 
@@ -49,7 +49,7 @@ const currentTab = computed(() => {
       </div>
 
       <!-- iOS Tab Bar -->
-      <div class="fixed bottom-0 left-0 right-0 z-99 ios-glass border-t-0.5 border-$ios-separator" style="padding-bottom: var(--sab)">
+      <div class="ios-glass fixed bottom-0 left-0 right-0 z-99 border-t-0.5 border-$ios-separator" style="padding-bottom: var(--sab)">
         <div class="h-50px flex items-end justify-around px-4">
           <RouterLink to="/" class="flex flex-1 flex-col items-center justify-center gap-0.5 pb-1 pt-1.5" :class="currentTab === 'home' ? 'text-$ios-blue' : 'text-$ios-secondary-label'">
             <div class="text-xl" :class="currentTab === 'home' ? 'i-ri-chat-1-fill' : 'i-ri-chat-1-line'" />
@@ -76,11 +76,11 @@ const currentTab = computed(() => {
         :opened="toast.visible"
       >
         <template #button>
-          <kButton clear rounded inline @click="close(toast.id)">
+          <kButton clear inline rounded @click="close(toast.id)">
             关闭
           </kButton>
         </template>
-        <div class="shrink flex items-center gap-2">
+        <div class="flex shrink items-center gap-2">
           <div v-if="toast.severity === 'success'" class="i-ri-check-line" />
           <div v-else-if="toast.severity === 'error'" class="i-ri-close-line" />
           <div v-else class="i-ri-information-line" />
@@ -98,7 +98,8 @@ body,
   height: 100%;
   margin: 0;
   padding: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family:
+    -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro Text', 'Helvetica Neue', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }

@@ -33,7 +33,7 @@ function stopRandom() {
       :session="session"
     />
 
-    <button class="btn mx-4 mb-4" @click="stopRandom">
+    <button class="mx-4 mb-4 btn" @click="stopRandom">
       <div i-ri-shuffle-line class="mr-1" />
       Random
     </button>

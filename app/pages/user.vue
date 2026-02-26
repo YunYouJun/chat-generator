@@ -19,7 +19,7 @@ const session = computed<ChatSession>(() => {
       <div class="flex flex-col gap-3">
         <div class="flex flex-col items-center gap-1">
           <button
-            class="ios-pressable inline-flex items-center justify-center rounded-full bg-$ios-blue p-2.5 text-white shadow-sm"
+            class="inline-flex ios-pressable items-center justify-center rounded-full bg-$ios-blue p-2.5 text-white shadow-sm"
             @click="uStore.exchangeAvatar"
           >
             <div
@@ -33,7 +33,7 @@ const session = computed<ChatSession>(() => {
 
         <div class="flex flex-col items-center gap-1">
           <button
-            class="ios-pressable inline-flex items-center justify-center rounded-full bg-$ios-blue p-2.5 text-white shadow-sm"
+            class="inline-flex ios-pressable items-center justify-center rounded-full bg-$ios-blue p-2.5 text-white shadow-sm"
             @click="uStore.exchangeMessage"
           >
             <div
@@ -47,7 +47,7 @@ const session = computed<ChatSession>(() => {
 
         <div class="flex flex-col items-center gap-1">
           <button
-            class="ios-pressable inline-flex items-center justify-center rounded-full border border-$ios-separator bg-$ios-card-bg p-2.5 shadow-sm"
+            class="inline-flex ios-pressable items-center justify-center border border-$ios-separator rounded-full bg-$ios-card-bg p-2.5 shadow-sm"
             @click="uStore.copyLink"
           >
             <div class="transform transition" i-ri:file-copy-2-line />
@@ -62,7 +62,7 @@ const session = computed<ChatSession>(() => {
       <div class="flex flex-col gap-2">
         <textarea
           v-model="uStore.sessionText"
-          class="min-h-150px w-full flex-1 rounded-xl border border-$ios-separator bg-$ios-card-bg p-3 text-sm outline-none transition focus:border-$ios-blue"
+          class="min-h-150px w-full flex-1 border border-$ios-separator rounded-xl bg-$ios-card-bg p-3 text-sm outline-none transition focus:border-$ios-blue"
           placeholder="输入对话内容"
         />
         <CGButton class="w-full" @click="uStore.sessionText = rawSessionText">

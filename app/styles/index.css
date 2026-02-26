@@ -97,7 +97,9 @@
 
 /* iOS Touch feedback */
 .ios-pressable {
-  transition: transform 0.2s cubic-bezier(0.25, 0.1, 0.25, 1), opacity 0.2s;
+  transition:
+    transform 0.2s cubic-bezier(0.25, 0.1, 0.25, 1),
+    opacity 0.2s;
   -webkit-tap-highlight-color: transparent;
 }
 
@@ -118,6 +120,8 @@
 }
 
 /* Prevent text selection on interactive elements */
-button, a, [role="button"] {
+button,
+a,
+[role='button'] {
   -webkit-tap-highlight-color: transparent;
 }

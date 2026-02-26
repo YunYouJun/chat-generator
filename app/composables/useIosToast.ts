@@ -18,7 +18,8 @@ export function useIosToast() {
 
     requestAnimationFrame(() => {
       const t = toasts.value.find(t => t.id === id)
-      if (t) t.visible = true
+      if (t)
+        t.visible = true
     })
 
     setTimeout(() => {
@@ -28,7 +29,8 @@ export function useIosToast() {
 
   function close(id: number) {
     const t = toasts.value.find(t => t.id === id)
-    if (t) t.visible = false
+    if (t)
+      t.visible = false
     setTimeout(() => {
       toasts.value = toasts.value.filter(t => t.id !== id)
     }, 300)

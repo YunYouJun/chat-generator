@@ -7,7 +7,7 @@ const router = useRouter()
     <div class="mb-6 text-5xl text-$ios-secondary-label">
       <div i-ri-chat-2-line />
     </div>
-    <h3 class="my-2 text-6xl font-thin tracking-tight text-$ios-label">
+    <h3 class="my-2 text-6xl text-$ios-label font-thin tracking-tight">
       404
     </h3>
     <p class="mb-8 text-$ios-secondary-label">

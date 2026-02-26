@@ -23,12 +23,11 @@ const showBack = computed(() => {
 
 function goBack() {
   if (window.history.length > 1) {
-    console.log('window.history.length', window.history.length)
     router.back()
-
   }
-  else
+  else {
     navigateTo('/')
+  }
 }
 </script>
 
@@ -38,7 +37,7 @@ function goBack() {
     <div class="absolute left-3 flex items-center">
       <button
         v-if="showBack"
-        class="ios-pressable flex items-center gap-0.5 text-$ios-blue"
+        class="flex ios-pressable items-center gap-0.5 text-$ios-blue"
         @click="goBack"
       >
         <div class="i-ri-arrow-left-s-line text-2xl" />

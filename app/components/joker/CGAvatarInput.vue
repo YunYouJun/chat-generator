@@ -117,7 +117,7 @@ onMounted(() => {
           v-model="qqInput"
           type="number"
           placeholder="QQ号"
-          class="w-full rounded-lg border border-$ios-separator bg-$ios-card-bg px-3 py-2 text-xs outline-none transition focus:border-$ios-blue"
+          class="w-full border border-$ios-separator rounded-lg bg-$ios-card-bg px-3 py-2 text-xs outline-none transition focus:border-$ios-blue"
           @keyup.enter="onInputSubmit"
           @focus="showDropdown = true"
           @blur="onInputBlur"
@@ -149,7 +149,7 @@ onMounted(() => {
       </div>
 
       <button
-        class="ios-pressable flex items-center justify-center gap-2 rounded-lg border border-$ios-separator bg-$ios-card-bg p-2 text-xs shadow-sm"
+        class="flex ios-pressable items-center justify-center gap-2 border border-$ios-separator rounded-lg bg-$ios-card-bg p-2 text-xs shadow-sm"
         @click="onInputSubmit"
       >
         <div i-ri:qq-line class="text-$ios-blue" />

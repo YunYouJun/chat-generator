@@ -67,12 +67,12 @@ onBeforeUnmount(() => {
               <div class="i-ri-chat-3-line text-3xl" />
             </div>
             <!-- Gradient fade -->
-            <div class="absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-$ios-card-bg to-transparent" />
+            <div class="absolute inset-x-0 bottom-0 h-16 from-$ios-card-bg to-transparent bg-gradient-to-t" />
           </div>
           <!-- Label -->
           <div class="flex items-center gap-1.5 px-3 pb-2.5 pt-2">
             <span class="text-lg leading-none">{{ dataset.emoji }}</span>
-            <span class="text-13px font-semibold tracking-tight text-$ios-label">{{ dataset.name }}</span>
+            <span class="text-13px text-$ios-label font-semibold tracking-tight">{{ dataset.name }}</span>
           </div>
         </div>
       </RouterLink>
