@@ -106,7 +106,7 @@ export const useUserStore = defineStore('user', () => {
   }
 
   const { copy } = useClipboard()
-  const toast = useToast()
+  const toast = useIosToast()
   /**
    * 复制链接
    */

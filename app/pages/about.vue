@@ -10,8 +10,10 @@ useSeoMeta({
 </script>
 
 <template>
-  <ContentRenderer v-if="home" class="markdown-body m-auto max-w-2xl px-4 text-left prose md:px-8" :value="home" />
-  <div v-else>
-    About not found
+  <div class="px-2">
+    <ContentRenderer v-if="home" class="markdown-body m-auto max-w-2xl rounded-xl bg-$ios-card-bg px-5 py-4 text-left prose shadow-sm md:px-8" :value="home" />
+    <div v-else class="py-20 text-center text-$ios-secondary-label">
+      About not found
+    </div>
   </div>
 </template>

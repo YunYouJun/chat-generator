@@ -3,20 +3,21 @@ const router = useRouter()
 </script>
 
 <template>
-  <main p="x4 y10" text="center dark-600 dark:gray-200">
-    <div text-4xl>
-      <div i-ri-chat-2-line inline-block />
+  <main class="flex flex-col items-center justify-center px-4 py-16 text-center">
+    <div class="mb-6 text-5xl text-$ios-secondary-label">
+      <div i-ri-chat-2-line />
     </div>
-    <h3 class="my-4 text-8xl font-thin">
+    <h3 class="my-2 text-6xl font-thin tracking-tight text-$ios-label">
       404
     </h3>
-    <div>
+    <p class="mb-8 text-$ios-secondary-label">
       还没有找到新的聊天记录
-    </div>
-    <div>
-      <button btn text-sm m="3 t8" p="y-2 x-3" @click="router.push('/')">
-        返回主页
-      </button>
-    </div>
+    </p>
+    <button
+      class="btn"
+      @click="router.push('/')"
+    >
+      返回主页
+    </button>
   </main>
 </template>

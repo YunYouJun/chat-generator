@@ -20,6 +20,6 @@
   },
   "devDependencies": {
     "@antfu/utils": "^9.3.0",
-    "@larksuiteoapi/node-sdk": "^1.56.0"
+    "@larksuiteoapi/node-sdk": "^1.59.0"
   }
 }

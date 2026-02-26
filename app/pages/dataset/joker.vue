@@ -7,7 +7,6 @@ useHead({
       content: '聊天记录, 生成器, 小丑, 模拟器',
     },
   ],
-  // favicon
   link: [
     {
       rel: 'icon',
@@ -21,8 +20,8 @@ const sessions = computed(() => getDataSetById('joker')?.sessions || [])
 </script>
 
 <template>
-  <div>
-    <h2 class="my-2 text-2xl font-medium">
+  <div class="px-2">
+    <h2 class="my-3 text-xl font-semibold tracking-tight">
       🤡 Joker
     </h2>
 

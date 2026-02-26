@@ -1,13 +1,10 @@
 <template>
-  <main class="relative text-center">
-    <div class="relative p-6">
+  <main class="relative">
+    <div class="relative">
       <slot />
-
-      <TheFooter />
+      <div class="px-4 pb-2">
+        <TheFooter />
+      </div>
     </div>
-    <!-- <Footer />
-    <div class="mx-auto mt-5 text-center text-sm opacity-25">
-      [Home Layout]
-    </div> -->
   </main>
 </template>

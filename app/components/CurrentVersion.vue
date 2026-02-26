@@ -7,7 +7,7 @@ const buildDate = (new Date(Number.parseInt(now))).toLocaleDateString()
 </script>
 
 <template>
-  <div v-if="commitSha && buildDate" mb-2 text-xs op-70>
+  <div v-if="commitSha && buildDate" mb-2 text-xs op-70 class="text-center">
     <span>
       当前版本 v{{ pkg.version }}
     </span>

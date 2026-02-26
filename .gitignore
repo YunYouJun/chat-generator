@@ -12,4 +12,5 @@ dist
 .edgeone
 .edgeone/*
 .tef_dist/*
-  
+
+.playwright-mcp

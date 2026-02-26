@@ -1,6 +1,6 @@
 import { execSync } from 'node:child_process'
 import process from 'node:process'
-import lara from '@primevue/themes/lara'
+import tailwindcss from '@tailwindcss/vite'
 import { pwa } from './app/config/pwa'
 import { appDescription } from './app/constants/index'
 
@@ -29,19 +29,7 @@ export default defineNuxtConfig({
     '@vite-pwa/nuxt',
     '@nuxt/eslint',
     '@nuxt/content',
-    '@primevue/nuxt-module',
   ],
-
-  primevue: {
-    options: {
-      theme: {
-        preset: lara,
-        options: {
-          darkModeSelector: '.dark',
-        },
-      },
-    },
-  },
 
   components: [
     { path: '~/components', pathPrefix: false },
@@ -58,10 +46,18 @@ export default defineNuxtConfig({
 
   css: [
     '@unocss/reset/tailwind.css',
+    'konsta/vue/theme.css',
     '~/styles/css-vars.css',
     '~/styles/index.css',
     '~/styles/override.css',
   ],
+
+  vite: {
+    plugins: [
+      // @ts-expect-error tailwindcss vite plugin type mismatch
+      tailwindcss(),
+    ],
+  },
 
   colorMode: {
     classSuffix: '',
@@ -89,7 +85,7 @@ export default defineNuxtConfig({
       ],
       meta: [
         // 禁用移动端缩放
-        { name: 'viewport', content: 'width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0' },
+        { name: 'viewport', content: 'width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0, viewport-fit=cover' },
         { name: 'description', content: appDescription },
         { name: 'apple-mobile-web-app-status-bar-style', content: 'black-translucent' },
         { name: 'theme-color', media: '(prefers-color-scheme: light)', content: 'white' },
@@ -98,13 +94,11 @@ export default defineNuxtConfig({
       script: [
         {
           type: 'text/javascript',
-          innerHTML: `<script type="text/javascript">
-    (function(c,l,a,r,i,t,y){
+          innerHTML: `(function(c,l,a,r,i,t,y){
         c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
         t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
         y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
-    })(window, document, "clarity", "script", "nzmux99byr");
-</script>`,
+    })(window, document, "clarity", "script", "nzmux99byr");`,
         },
       ],
     },

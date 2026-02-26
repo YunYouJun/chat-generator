@@ -1,7 +1,6 @@
 <template>
-  <main class="text-center md:pt-4">
+  <main class="pb-4 text-center">
     <slot />
-
     <TheFooter />
   </main>
 </template>

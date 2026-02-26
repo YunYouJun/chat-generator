@@ -1,15 +1,11 @@
-import { getQQAvatar } from '~~/packages/chat-ui/utils'
+import { getQQAvatar } from '~~/packages/chat-ui'
 
 /**
- * fetchQQAvatar from internal API
+ * Fetch QQ avatar base64 from server API
  */
 export async function fetchQQAvatar(qq: number) {
-  const base64 = await $fetch('/api/qq/avatar', {
-    query: {
-      url: getQQAvatar({
-        qq,
-      }),
-    },
+  const url = getQQAvatar({ qq })
+  return $fetch('/api/qq/avatar', {
+    query: { url },
   })
-  return base64
 }

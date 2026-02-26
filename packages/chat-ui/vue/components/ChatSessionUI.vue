@@ -4,7 +4,7 @@ import type { ChatMember, ChatMessageItem, ChatSession } from '../../types'
 import { copyImageToClipboard } from 'copy-image-clipboard'
 
 import { toPng } from 'html-to-image'
-import { useToast } from 'primevue/usetoast'
+import { useIosToast } from '~/composables/useIosToast'
 import { convertMessagesToQAText, parseQAMessage } from '~~/packages/datasets/utils'
 import { A_AVATAR_SYMBOL, Q_AVATAR_SYMBOL } from '../constants'
 
@@ -55,7 +55,7 @@ const parsedQAMessages = computed(() => {
 
 const toPngOptions: Options = {}
 
-const toast = useToast()
+const toast = useIosToast()
 /**
  * copy image
  */

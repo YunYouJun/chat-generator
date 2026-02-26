@@ -1,12 +1,49 @@
 :root {
-  --cg-c-bg: #f5f5f5;
-
+  --cg-c-bg: #f2f2f7;
+  --cg-c-text: #000;
   --c-bg-chat: #f2f2f2;
+
+  /* iOS System Colors */
+  --ios-blue: #007aff;
+  --ios-green: #34c759;
+  --ios-orange: #ff9500;
+  --ios-red: #ff3b30;
+  --ios-teal: #5ac8fa;
+
+  /* iOS Semantic Colors */
+  --ios-label: #000;
+  --ios-secondary-label: rgba(60, 60, 67, 0.6);
+  --ios-tertiary-label: rgba(60, 60, 67, 0.3);
+  --ios-separator: rgba(60, 60, 67, 0.12);
+  --ios-grouped-bg: #f2f2f7;
+  --ios-card-bg: #fff;
+
+  /* iOS Glass */
+  --ios-glass-bg: rgba(255, 255, 255, 0.72);
+  --ios-glass-border: rgba(255, 255, 255, 0.18);
+
+  /* iOS Radius */
+  --ios-radius-sm: 8px;
+  --ios-radius-md: 12px;
+  --ios-radius-lg: 16px;
+
+  /* Safe areas */
+  --sat: env(safe-area-inset-top, 0px);
+  --sab: env(safe-area-inset-bottom, 0px);
 }
 
 html.dark {
-  --cg-c-bg: #222;
+  --cg-c-bg: #000;
   --cg-c-text: #fff;
+  --c-bg-chat: #1c1c1e;
 
-  --c-bg-chat: #111;
+  --ios-label: #fff;
+  --ios-secondary-label: rgba(235, 235, 245, 0.6);
+  --ios-tertiary-label: rgba(235, 235, 245, 0.3);
+  --ios-separator: rgba(84, 84, 88, 0.36);
+  --ios-grouped-bg: #000;
+  --ios-card-bg: #1c1c1e;
+
+  --ios-glass-bg: rgba(30, 30, 30, 0.72);
+  --ios-glass-border: rgba(255, 255, 255, 0.08);
 }

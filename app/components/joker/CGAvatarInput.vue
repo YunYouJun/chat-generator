@@ -12,28 +12,21 @@ const uStore = useUserStore()
 const customAvatar = ref<string>('')
 const qqAvatar = ref<string>('')
 
-/**
- * Query QQ avatar
- * @param qq
- */
-async function queryQQAvatar(qq: number | {
+const qqInput = ref('')
+
+async function queryQQAvatar(qqNum: number | {
   name: string
   qq: number
 }) {
-  let curQQ = qq
-  if (typeof qq === 'object') {
-    curQQ = qq.qq
+  let curQQ = qqNum
+  if (typeof qqNum === 'object') {
+    curQQ = qqNum.qq
   }
-  else {
-    curQQ = qq
-  }
-  const base64 = await fetchQQAvatar(curQQ)
+  const base64 = await fetchQQAvatar(curQQ as number)
   qqAvatar.value = typeof base64 === 'string' ? base64 : ''
-
   avatar.value = qqAvatar.value
-
   uStore.addUser({
-    qq: curQQ,
+    qq: curQQ as number,
     avatar: qqAvatar.value,
   })
 }
@@ -43,34 +36,49 @@ const iAvatar = computed(() => {
 })
 
 const uploadAvatarInput = ref<HTMLInputElement | null>(null)
-/**
- * Upload avatar
- * file input
- */
+
 function uploadAvatar() {
   uploadAvatarInput.value?.click()
+}
 
-  uploadAvatarInput.value?.addEventListener('change', async () => {
-    const file = uploadAvatarInput.value?.files?.[0]
-    if (file) {
-      // to base64
-      const base64 = await new Promise<string>((resolve) => {
-        const reader = new FileReader()
-        reader.onload = () => {
-          resolve(reader.result as string)
-        }
-        reader.readAsDataURL(file)
-      })
-      customAvatar.value = base64
-
+function onFileChange(e: Event) {
+  const file = (e.target as HTMLInputElement)?.files?.[0]
+  if (file) {
+    const reader = new FileReader()
+    reader.onload = () => {
+      customAvatar.value = reader.result as string
       avatar.value = customAvatar.value
       qq.value = 0
     }
-  })
+    reader.readAsDataURL(file)
+  }
+}
+
+function onSelectUser(user: { qq?: number, avatar?: string }) {
+  if (user.qq) {
+    qq.value = user.qq
+    qqInput.value = user.qq.toString()
+    queryQQAvatar(user.qq)
+  }
+}
+
+function onInputSubmit() {
+  const num = Number.parseInt(qqInput.value)
+  if (num) {
+    qq.value = num
+    queryQQAvatar(num)
+  }
+}
+
+const showDropdown = ref(false)
+
+function onInputBlur() {
+  setTimeout(() => showDropdown.value = false, 200)
 }
 
 onMounted(() => {
   if (qq.value) {
+    qqInput.value = qq.value.toString()
     queryQQAvatar(qq.value)
   }
 })
@@ -86,91 +94,67 @@ onMounted(() => {
         v-if="iAvatar" :src="iAvatar" alt="avatar"
         class="size-16 rounded-full object-cover object-center"
       >
-      <div v-else class="size-16 rounded-full bg-gray" />
+      <div v-else class="size-16 rounded-full bg-gray-300 dark:bg-gray-600" />
       <input
         ref="uploadAvatarInput" type="file" class="hidden"
         accept="image/*"
-        @change="uploadAvatar"
+        @change="onFileChange"
       >
       <div
-        class="upload-avatar-handler absolute inset-0 flex items-center justify-center rounded-full bg-black/40 text-white text-shadow op-0 transition"
+        class="upload-avatar-handler absolute inset-0 flex items-center justify-center rounded-full bg-black/40 text-white op-0 transition"
       >
         <div i-ri:upload-2-line />
       </div>
     </div>
 
-    <div class="text-black/60 dark:text-white">
+    <div class="text-sm text-$ios-secondary-label">
       {{ nickname }}
     </div>
 
     <div class="flex flex-col gap-2">
-      <div class="relative flex items-center justify-center gap-2">
-        <!-- <input
-          class="w-31 border rounded bg-transparent p-2 text-sm text-black/60 shadow focus:border-dark outline-none!"
-          dark="text-white border-white/60 focus:border-white"
+      <div class="relative">
+        <input
+          v-model="qqInput"
           type="number"
-          :value="qq" placeholder="输入QQ号查询"
-          @input="updateQQ"
-          @keyup.enter="queryQQAvatar(qq || 0)"
-        > -->
-        <Select
-          :model-value="qq"
-          editable
-          type="number"
-          :options="uStore.previousUsers"
-          option-label="qq"
-          option-value="qq"
-          placeholder="输入/选择 QQ 号查询"
-          class="w-full text-xs"
-          @update:model-value="(val) => {
-            qq = Number(val)
-          }"
-          @blur="queryQQAvatar(qq || 0)"
-          @keyup.enter="queryQQAvatar(qq || 0)"
+          placeholder="QQ号"
+          class="w-full rounded-lg border border-$ios-separator bg-$ios-card-bg px-3 py-2 text-xs outline-none transition focus:border-$ios-blue"
+          @keyup.enter="onInputSubmit"
+          @focus="showDropdown = true"
+          @blur="onInputBlur"
         >
-          <template #option="slotProps">
-            <div class="flex items-center gap-2">
-              <img
-                class="size-6 rounded-full"
-                :alt="slotProps.option.qq"
-                :src="slotProps.option.avatar"
-              >
-              <div class="text-xs">
-                {{ slotProps.option.qq }}
-              </div>
-
-              <div
-                class="absolute right-2 op-80 hover:op-100"
-                i-ri-close-circle-line
-                @click.prevent.stop="uStore.removeUser(slotProps.option)"
-              />
-            </div>
-          </template>
-        </Select>
+        <!-- Dropdown for previous users -->
+        <div
+          v-if="showDropdown && uStore.previousUsers.length"
+          class="absolute left-0 right-0 top-full z-10 mt-1 overflow-hidden rounded-xl bg-$ios-card-bg shadow-lg"
+        >
+          <div
+            v-for="user in uStore.previousUsers"
+            :key="user.qq"
+            class="flex items-center gap-2 px-3 py-2 text-xs transition active:bg-black/5 dark:active:bg-white/5"
+            @mousedown.prevent="onSelectUser(user)"
+          >
+            <img
+              v-if="user.avatar"
+              class="size-5 rounded-full"
+              :src="user.avatar"
+            >
+            <span>{{ user.qq }}</span>
+            <div
+              class="ml-auto text-$ios-red op-60 hover:op-100"
+              i-ri-close-circle-line
+              @mousedown.prevent.stop="uStore.removeUser(user)"
+            />
+          </div>
+        </div>
       </div>
 
       <button
-        class="flex items-center justify-center gap-2 rounded p-2 text-xs shadow"
-        border="~ dark:gray"
-        hover="bg-blue-500 text-white"
-        active="bg-blue-600"
-        @click="queryQQAvatar(qq || 0)"
+        class="ios-pressable flex items-center justify-center gap-2 rounded-lg border border-$ios-separator bg-$ios-card-bg p-2 text-xs shadow-sm"
+        @click="onInputSubmit"
       >
-        <div class="cursor-pointer" i-ri:qq-line />
-        <span class="flex items-center justify-center gap-1">
-          <span>获取</span>
-          <!-- <div i-ri:qq-fill /> -->
-          QQ
-          <span>头像</span>
-        </span>
+        <div i-ri:qq-line class="text-$ios-blue" />
+        <span>获取 QQ 头像</span>
       </button>
-
-      <!-- <div
-        class="size-10 flex cursor-pointer items-center justify-center gap-1 rounded-full bg-blue p-2"
-        @click="queryQQAvatar(qq)"
-      >
-        <div class="text-white" i-ri-qq-fill />
-      </div> -->
     </div>
   </div>
 </template>

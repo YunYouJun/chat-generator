@@ -1,6 +1,40 @@
-/* override primevue */
-:root {
-  --p-toast-width: 300px !important;
+/* Konsta UI & iOS overrides */
 
-  --p-list-option-padding: 0.5rem 0.5rem;
+/* iOS toast notification */
+.ios-toast {
+  position: fixed;
+  top: calc(var(--sat) + 56px);
+  left: 50%;
+  transform: translateX(-50%) translateY(-20px);
+  padding: 10px 20px;
+  border-radius: var(--ios-radius-md);
+  font-size: 14px;
+  font-weight: 500;
+  z-index: 9999;
+  opacity: 0;
+  transition: all 0.3s cubic-bezier(0.25, 0.1, 0.25, 1);
+  pointer-events: none;
+  backdrop-filter: saturate(180%) blur(20px);
+  -webkit-backdrop-filter: saturate(180%) blur(20px);
+}
+
+.ios-toast.show {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+
+.ios-toast-success {
+  background: rgba(52, 199, 89, 0.9);
+  color: #fff;
+}
+
+.ios-toast-error {
+  background: rgba(255, 59, 48, 0.9);
+  color: #fff;
+}
+
+.ios-toast-info {
+  background: var(--ios-glass-bg);
+  color: var(--ios-label);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
 }

@@ -11,8 +11,8 @@ const dataset = computed(() => getDataSetById(id) ?? {
 </script>
 
 <template>
-  <div>
-    <h2 class="my-2 text-2xl font-medium">
+  <div class="px-2">
+    <h2 class="my-3 text-xl font-semibold tracking-tight">
       {{ dataset.emoji }} {{ dataset.name }}
     </h2>
 

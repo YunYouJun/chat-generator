@@ -8,8 +8,6 @@ let intervalId: ReturnType<typeof setInterval>
 const jokerChatDataSet = computed(() => getDataSetById('joker'))
 
 onMounted(() => {
-  // random
-  // session.value = jokerChatDataSet.sessions[Math.floor(Math.random() * jokerChatDataSet.sessions.length)]
   let index = 0
   intervalId = setInterval(() => {
     if (!jokerChatDataSet.value)
@@ -29,14 +27,15 @@ function stopRandom() {
 </script>
 
 <template>
-  <div class="min-h-500px w-375px flex flex-col justify-between">
+  <div class="mx-auto min-h-500px w-375px flex flex-col justify-between gap-3">
     <ChatSessionUI
       v-if="session"
       :session="session"
     />
 
-    <CGButton @click="stopRandom">
+    <button class="btn mx-4 mb-4" @click="stopRandom">
+      <div i-ri-shuffle-line class="mr-1" />
       Random
-    </CGButton>
+    </button>
   </div>
 </template>

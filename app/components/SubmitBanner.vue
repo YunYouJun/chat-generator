@@ -3,13 +3,14 @@ import { submitSheetUrl } from '../config'
 </script>
 
 <template>
-  <div class="w-full flex justify-center bg-black/5 p-4 shadow">
+  <div class="mx-4 flex justify-center rounded-xl bg-$ios-card-bg p-3 shadow-sm">
     <a
-      class="flex items-center justify-center gap-1 hover:underline"
+      class="flex items-center justify-center gap-2 text-sm text-$ios-blue transition active:opacity-60"
       :href="submitSheetUrl" target="_blank" alt="投稿表格"
     >
       <div class="i-vscode-icons:file-type-excel" />
-      <span class="op-80">投稿表格</span>
+      <span>投稿表格</span>
+      <div i-ri-external-link-line class="text-xs" />
     </a>
   </div>
 </template>
