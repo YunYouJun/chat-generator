@@ -14,7 +14,10 @@ export const pwa: ModuleOptions = {
     name: appName,
     short_name: appName,
     description: appDescription,
-    theme_color: '#ffffff',
+    // manifest 只能给单一静态值（无法按明暗切换），这里用 App 的浅色表层作为安装/启动基线；
+    // 运行时（含已安装的独立窗口）的明暗适配由 app.vue 的动态 <meta name="theme-color"> 负责。
+    theme_color: '#f2f2f7',
+    background_color: '#f2f2f7',
   },
   workbox: {
     globPatterns: ['**/*.{js,css,html,txt,png,ico,svg}'],
