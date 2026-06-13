@@ -2,6 +2,9 @@
 import { kApp, kButton, kToast } from 'konsta/vue'
 import { appName } from '~/constants'
 
+const color = useColorMode()
+const isDark = computed(() => color.value === 'dark')
+
 useHead({
   title: appName,
   meta: [
@@ -9,11 +12,14 @@ useHead({
       name: 'keywords',
       content: '聊天记录, 生成器, 小丑, 模拟器',
     },
+    // 顶部浏览器主题色跟随 App 明暗模式（useColorMode），而非系统 prefers-color-scheme，
+    // 否则手动切暗色、系统仍为亮色时，顶部会停留在亮色 meta（白）。
+    {
+      name: 'theme-color',
+      content: computed(() => (isDark.value ? '#222222' : '#ffffff')),
+    },
   ],
 })
-
-const color = useColorMode()
-const isDark = computed(() => color.value === 'dark')
 const { toasts, close } = useIosToast()
 
 const route = useRoute()

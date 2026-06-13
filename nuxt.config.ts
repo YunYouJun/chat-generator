@@ -87,8 +87,8 @@ export default defineNuxtConfig({
       meta: [
         { name: 'description', content: appDescription },
         { name: 'apple-mobile-web-app-status-bar-style', content: 'black-translucent' },
-        { name: 'theme-color', media: '(prefers-color-scheme: light)', content: 'white' },
-        { name: 'theme-color', media: '(prefers-color-scheme: dark)', content: '#222222' },
+        // theme-color 改由 app.vue 跟随 useColorMode 动态设置（见下），
+        // 不再用 prefers-color-scheme 媒体查询——否则手动切暗色但系统为亮色时顶部仍为白。
       ],
       script: [
         {
