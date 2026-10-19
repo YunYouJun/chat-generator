@@ -119,6 +119,29 @@ function copyText() {
     })
 }
 
+/**
+ * copy content of a single message
+ */
+function copyMessage(content: string) {
+  copy(content)
+    .then(() => {
+      toast.add({
+        severity: 'success',
+        summary: '拷贝成功',
+        detail: '已将这条消息拷贝到剪贴板',
+        life: 2000,
+      })
+    })
+    .catch(() => {
+      toast.add({
+        severity: 'error',
+        summary: '拷贝失败',
+        detail: '复制消息时出错',
+        life: 3000,
+      })
+    })
+}
+
 function download() {
   const el = sessionRef.value
   if (!el) {
@@ -176,6 +199,7 @@ function custom() {
         v-else
         :sender="getSender(message)"
         :message="message"
+        @copy="copyMessage"
       />
     </template>
   </div>
