@@ -8,6 +8,18 @@ const props = defineProps<{
   message: ChatMessageItem
 }>()
 
+const emit = defineEmits<{
+  /**
+   * click bubble to copy its content
+   */
+  copy: [content: string]
+}>()
+
+function onBubbleClick() {
+  if (props.message.content)
+    emit('copy', props.message.content)
+}
+
 const isUser = computed(() => {
   return props.sender?.type === 'user'
 })
@@ -85,13 +97,14 @@ const iAvatar = computed(() => {
           class="i-ri-error-warning-fill text-base text-#f74c30"
         />
         <div
-          class="qq-chat-bubble flex-1 rounded-lg p-2"
+          class="qq-chat-bubble flex-1 cursor-pointer rounded-lg p-2 transition active:op-70"
           text="sm left"
           dark="bg-#262626 text-white"
           :class="{
             'bg-#4397f7 text-white': isUser,
             'bg-white text-black': !isUser,
           }"
+          @click="onBubbleClick"
         >
           <span v-if="message.content">
             {{ message.content }}
